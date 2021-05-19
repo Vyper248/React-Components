@@ -7,6 +7,7 @@ import BasicButton from './components/BasicButton';
 import BasicOutlineButton from './components/BasicOutlineButton';
 import AnimatedButton1 from './components/AnimatedButton1';
 import ConfirmButtonInline from './components/ConfirmButtonInline';
+import ConfirmButtonPopup from './components/ConfirmButtonPopup';
 
 function App() {
     return (
@@ -32,9 +33,13 @@ function App() {
 				<AnimatedButton1 label='Animated Button' color='#0F0'/>
 
 				<Heading text='Confirmation Buttons'/>
-				<ConfirmButtonInline label='Confirm Button' color='blue'/>
-				<ConfirmButtonInline label='Confirm Button' color='red' textColor='black'/>
-				<ConfirmButtonInline label='Confirm Button' color='black'/>
+				<ConfirmButtonInline label='Confirm Button 1' color='blue'/>
+				<ConfirmButtonInline label='Confirm Button 1' color='red' textColor='black'/>
+				<ConfirmButtonInline label='Confirm Button 1' color='black'/>
+				<br/>
+				<ConfirmButtonPopup label='Confirm Button 2' color='#AA23AC'/>
+				<ConfirmButtonPopup label='Confirm Button 2' color='black'/>
+				<ConfirmButtonPopup label='Confirm Button 2' color='green'/>
 				<Heading text='Inputs'/>
 				<Heading text='Modals'/>
 				<Heading text='Tables'/>
