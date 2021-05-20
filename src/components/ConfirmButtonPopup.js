@@ -26,7 +26,7 @@ const StyledComp = styled.div`
     & .confirmation.visible {
         opacity: 1;
         pointer-events: all;
-        transition: 0.3s;
+        transition: 0.3s opacity;
     }
 
     & > .confirmation {
@@ -35,7 +35,7 @@ const StyledComp = styled.div`
         padding: 5px;
         border: 1px solid black;
         border-radius: 5px;
-        transition: 0.3s;
+        transition: 0.3s opacity;
         opacity: 0;
         pointer-events: none;
         color: black;
@@ -127,6 +127,7 @@ const StyledComp = styled.div`
 
 const ConfirmButtonPopup = ({label='', onClick=()=>{}, color='#CCC', textColor, width, margin, direction='top'}) => {
     const [confirmOpen, setConfirmOpen] = useState(false);
+    const [userDirection, setDirection] = useState(direction);
     const ref = useRef();
     const handleClickOutside = () => {
         if (confirmOpen) setConfirmOpen(false);
@@ -136,7 +137,31 @@ const ConfirmButtonPopup = ({label='', onClick=()=>{}, color='#CCC', textColor, 
     if (textColor === undefined && color !== '#CCC') textColor = getContrastYIQ(color);
 
     const showConfirm = () => {
+        checkDirection();
         setConfirmOpen(true);
+    }
+
+    const checkDirection = () => {
+        let rect = ref.current.getBoundingClientRect();
+        let left = rect.x > 130;
+        let right = window.innerWidth - (rect.x + rect.width) > 130;
+        let top = rect.y > 70;
+        let bottom = window.innerHeight - (rect.y + rect.height) > 70;
+        let directions = {top, bottom, left, right};
+
+        if (direction !== userDirection && directions[direction]) setDirection(direction);
+        if (!left && direction === 'left') setDirection(getValidDirection(directions));
+        if (!right && direction === 'right') setDirection(getValidDirection(directions));
+        if (!top && direction === 'top') setDirection(getValidDirection(directions));
+        if (!bottom && direction === 'bottom') setDirection(getValidDirection(directions));
+    }
+
+    const getValidDirection = (directions) => {
+        for (let key in directions) {
+            if (directions[key]) return key;
+        }
+        //if no direction is valid, just return what user wanted/default
+        return direction; 
     }
 
     const hideConfirm = () => {
@@ -154,10 +179,10 @@ const ConfirmButtonPopup = ({label='', onClick=()=>{}, color='#CCC', textColor, 
             textColor={textColor}
             width={width} 
             margin={margin}>
-            <div className='label' onClick={showConfirm}>
+            <div ref={ref} className='label' onClick={showConfirm}>
                 <div>{label}</div>
             </div>
-            <div ref={ref} className={`confirmation${confirmOpen ? ' visible' : ''} ${direction}`}>
+            <div className={`confirmation${confirmOpen ? ' visible' : ''} ${userDirection}`}>
                 <span>Are you sure?</span>
                 <div className='confirm' onClick={onConfirm}>Yes</div>
                 <div className='cancel' onClick={hideConfirm}>No</div>
