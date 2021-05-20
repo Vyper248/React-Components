@@ -37,9 +37,10 @@ function App() {
 				<ConfirmButtonInline label='Confirm Button 1' color='red' textColor='black'/>
 				<ConfirmButtonInline label='Confirm Button 1' color='black'/>
 				<br/>
-				<ConfirmButtonPopup label='Confirm Button 2' color='#AA23AC'/>
+				<ConfirmButtonPopup label='Confirm Button 2' color='#AA23AC' direction='left'/>
 				<ConfirmButtonPopup label='Confirm Button 2' color='black'/>
-				<ConfirmButtonPopup label='Confirm Button 2' color='green'/>
+				<ConfirmButtonPopup label='Confirm Button 2' color='green' direction='bottom'/>
+				<ConfirmButtonPopup label='Confirm Button 2' color='red' textColor='black' direction='right'/>
 				<Heading text='Inputs'/>
 				<Heading text='Modals'/>
 				<Heading text='Tables'/>

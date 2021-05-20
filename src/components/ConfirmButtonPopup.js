@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
+import useClickOutside from 'use-click-outside';
 
 import getContrastYIQ from '../colorFunction';
 
@@ -30,9 +31,6 @@ const StyledComp = styled.div`
 
     & > .confirmation {
         position: absolute;
-        bottom: calc(100% + 5px);
-        left: 50%;
-        transform: translateX(-50%);
         width: 120px;
         padding: 5px;
         border: 1px solid black;
@@ -44,18 +42,63 @@ const StyledComp = styled.div`
         background-color: white;
     }
 
+    & > .confirmation.top {
+        bottom: calc(100% + 5px);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    & > .confirmation.bottom {
+        top: calc(100% + 5px);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    & > .confirmation.left {
+        right: calc(100% + 5px);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    & > .confirmation.right {
+        left: calc(100% + 5px);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
     & .confirmation::after {
         content: '';
         display: block;
-        width: 10px;
-        height: 10px;
-        border-left: 1px solid black;
-        border-bottom: 1px solid black;
+        width: 8px;
+        height: 8px;
         background-color: white;
         position: absolute;
-        bottom: -6px;
+        border-left: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+
+    & .confirmation.top::after {
+        bottom: -5px;
         left: 50%;
         transform:  translateX(-50%) rotate(-45deg);
+    }
+
+    & .confirmation.bottom::after {
+        top: -5px;
+        left: 50%;
+        transform:  translateX(-50%) rotate(135deg);
+    }
+
+    & .confirmation.left::after {
+        right: -5px;
+        top: 50%;
+        transform:  translateY(-50%) rotate(-135deg);
+    }
+
+    & .confirmation.right::after {
+        left: -5px;
+        top: 50%;
+        transform:  translateY(-50%) rotate(45deg);
     }
 
     & > .confirmation span {
@@ -82,8 +125,13 @@ const StyledComp = styled.div`
     }
 `;
 
-const ConfirmButtonPopup = ({label='', onClick=()=>{}, color='#CCC', textColor, width, margin}) => {
+const ConfirmButtonPopup = ({label='', onClick=()=>{}, color='#CCC', textColor, width, margin, direction='top'}) => {
     const [confirmOpen, setConfirmOpen] = useState(false);
+    const ref = useRef();
+    const handleClickOutside = () => {
+        if (confirmOpen) setConfirmOpen(false);
+    }
+    useClickOutside(ref, handleClickOutside);
 
     if (textColor === undefined && color !== '#CCC') textColor = getContrastYIQ(color);
 
@@ -109,7 +157,7 @@ const ConfirmButtonPopup = ({label='', onClick=()=>{}, color='#CCC', textColor, 
             <div className='label' onClick={showConfirm}>
                 <div>{label}</div>
             </div>
-            <div className={`confirmation${confirmOpen ? ' visible' : ''}`}>
+            <div ref={ref} className={`confirmation${confirmOpen ? ' visible' : ''} ${direction}`}>
                 <span>Are you sure?</span>
                 <div className='confirm' onClick={onConfirm}>Yes</div>
                 <div className='cancel' onClick={hideConfirm}>No</div>
