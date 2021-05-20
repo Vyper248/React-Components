@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import useClickOutside from 'use-click-outside';
 
-import getContrastYIQ from '../colorFunction';
+import getContrastYIQ from '../../colorFunction';
 
 const StyledComp = styled.div`
     background-color: ${props => props.color};

@@ -3,11 +3,14 @@ import './App.css';
 import Container from './components/Container';
 import Header from './components/Header';
 import Heading from './components/Heading';
-import BasicButton from './components/BasicButton';
-import BasicOutlineButton from './components/BasicOutlineButton';
-import AnimatedButton1 from './components/AnimatedButton1';
-import ConfirmButtonInline from './components/ConfirmButtonInline';
-import ConfirmButtonPopup from './components/ConfirmButtonPopup';
+
+import BasicButton from './components/Buttons/BasicButton';
+import BasicOutlineButton from './components/Buttons/BasicOutlineButton';
+import AnimatedButton1 from './components/Buttons/AnimatedButton1';
+import ConfirmButtonInline from './components/Buttons/ConfirmButtonInline';
+import ConfirmButtonPopup from './components/Buttons/ConfirmButtonPopup';
+
+import Loading1 from './components/Loading/Loading1';
 
 function App() {
     return (
@@ -41,6 +44,10 @@ function App() {
 				<ConfirmButtonPopup label='Confirm Button 2' color='black'/>
 				<ConfirmButtonPopup label='Confirm Button 2' color='green' direction='bottom'/>
 				<ConfirmButtonPopup label='Confirm Button 2' color='red' textColor='black' direction='right'/>
+
+				<Heading text='Loading'/>
+				<Loading1/>
+				
 				<Heading text='Inputs'/>
 				<Heading text='Modals'/>
 				<Heading text='Tables'/>

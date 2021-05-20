@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import getContrastYIQ from '../colorFunction';
+import getContrastYIQ from '../../colorFunction';
 
 const StyledComp = styled.div`
     color: ${props => props.textColor ? props.textColor : 'black'};

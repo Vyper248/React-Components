@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import getContrastYIQ from '../colorFunction';
+import getContrastYIQ from '../../colorFunction';
 
 const StyledComp = styled.div`
     background-color: ${props => props.color};

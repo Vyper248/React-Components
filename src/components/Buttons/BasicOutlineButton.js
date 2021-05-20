@@ -1,33 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import getContrastYIQ from '../colorFunction';
+import getContrastYIQ from '../../colorFunction';
 
 const StyledComp = styled.div`
-    background-color: ${props => props.color};
+    border: 1px solid ${props => props.color};
+    background-color: ${props => props.backgroundColor};
     color: ${props => props.textColor ? props.textColor : 'black'};
     width: ${props => props.width ? props.width : '150px'};
+    border-radius: 5px;
     padding: 5px;
     margin: ${props => props.margin ? props.margin : '5px'};
     display: inline-block;
-    outline: 1px solid ${props => props.color};
-    outline-offset: 0px;
-    outline-width: 1px;
-    transition: 0.1s;
 
     &:hover {
         cursor: pointer;
-        outline-offset: 3px;
-        transition: 0.1s;
+        filter: brightness(75%);
     }
 `;
 
-const AnimatedButton1 = ({label='', onClick=()=>{}, color='#CCC', textColor, width, margin}) => {
-    if (textColor === undefined && color !== '#CCC') textColor = getContrastYIQ(color);
+const BasicOutlineButton = ({label='', onClick=()=>{}, color='#CCC', backgroundColor='white', textColor, width, margin}) => {
+    if (textColor === undefined && color !== '#CCC') textColor = getContrastYIQ(backgroundColor);
 
     return (
         <StyledComp 
             color={color} 
+            backgroundColor={backgroundColor}
             textColor={textColor}
             width={width} 
             margin={margin} 
@@ -35,4 +33,4 @@ const AnimatedButton1 = ({label='', onClick=()=>{}, color='#CCC', textColor, wid
     );
 }
 
-export default AnimatedButton1;
+export default BasicOutlineButton;
