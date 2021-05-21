@@ -12,6 +12,7 @@ import ConfirmButtonPopup from './components/Buttons/ConfirmButtonPopup';
 
 import Loading1 from './components/Loading/Loading1';
 import Loading2 from './components/Loading/Loading2';
+import Loading3 from './components/Loading/Loading3';
 
 function App() {
     return (
@@ -51,6 +52,7 @@ function App() {
 				<Loading2 color='green' rotation='90' origin='middle' smooth='2'/>
 				<Loading2 color='red' rotation='0' origin='middle' smooth='3'/>
 				<Loading2 color='blue' rotation='-90' origin='left' smooth='1'/>
+				<Loading3 color='black'/>
 
 				<Heading text='Inputs'/>
 				<Heading text='Modals'/>

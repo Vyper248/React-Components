@@ -14,7 +14,7 @@ const StyledComp = styled.div`
         height: 5px;
         margin-bottom: 1px;
         transform-origin: ${props => props.origin};
-        animation: anim1 0.8s ease-in 0s infinite alternate;
+        animation: anim1 0.8s ease-in infinite alternate;
     }
 
     & > div:nth-child(8) { animation-delay: -0.2s; }
