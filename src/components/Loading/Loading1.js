@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const StyledComp = styled.div`
     display: inline-block;
+    margin: 5px;
     width: 50px;
     height: 50px;
     border-radius: 50%;

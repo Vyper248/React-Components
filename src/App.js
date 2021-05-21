@@ -11,6 +11,7 @@ import ConfirmButtonInline from './components/Buttons/ConfirmButtonInline';
 import ConfirmButtonPopup from './components/Buttons/ConfirmButtonPopup';
 
 import Loading1 from './components/Loading/Loading1';
+import Loading2 from './components/Loading/Loading2';
 
 function App() {
     return (
@@ -46,8 +47,11 @@ function App() {
 				<ConfirmButtonPopup label='Confirm Button 2' color='red' textColor='black' direction='right'/>
 
 				<Heading text='Loading'/>
-				<Loading1/>
-				
+				<Loading1 color='blue'/>
+				<Loading2 color='green' rotation='90' origin='middle' smooth='2'/>
+				<Loading2 color='red' rotation='0' origin='middle' smooth='3'/>
+				<Loading2 color='blue' rotation='-90' origin='left' smooth='1'/>
+
 				<Heading text='Inputs'/>
 				<Heading text='Modals'/>
 				<Heading text='Tables'/>
