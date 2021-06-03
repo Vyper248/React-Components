@@ -4,13 +4,12 @@ import styled from 'styled-components';
 const StyledComp = styled.div`
     margin: 5px;
     height: 28px;
-    display: inline-block;
+    display: inline-flex;
     white-space: nowrap;
 
     & > label, & > input {
         border: 1px solid black;
         height: 100%;
-        vertical-align: middle;
         margin: 0px;
         display: inline-flex;
         align-items: center;
@@ -25,11 +24,10 @@ const StyledComp = styled.div`
         width: ${props => props.labelWidth ? props.labelWidth+'px' : ''};
         ${props => props.labelAlign === 'right' ? 'justify-content: flex-end;' : ''}
         ${props => props.labelAlign === 'center' ? 'justify-content: center;' : ''}
-        right: -15px; 
-        padding-right: 25px; 
-        border-right: none; 
-        margin-left: -15px; 
-        border-radius: 5px 0px 0px 5px;
+        right: -25px; 
+        padding-right: 35px; 
+        margin-left: -25px; 
+        border-radius: 20px 50px 50px 20px;
     }
 
     & > input {
@@ -52,6 +50,8 @@ const StyledComp = styled.div`
 
     & > input[type=button] {
         justify-content: center;
+        background-color: rgb(239,239,239);
+        padding: 0px;
     }
 
     & > input[type=color] {
@@ -89,7 +89,7 @@ const Input = ({type='text', value, onChange, width=100, labelText='', labelWidt
 
     return (
         <StyledComp width={width} labelText={labelText && labelText.length > 0} labelWidth={labelWidth} labelAlign={labelAlign}>
-            { labelText && labelText.length > 0 ? <label>{labelText}</label> : null }
+            { labelText && labelText.length > 0 ? <label>{labelText}</label> : <span></span> }
             <input type={type} value={value} onChange={changeInput} checked={type === 'checkbox' ? !!value : false} {...rest}/>
         </StyledComp>
     );
