@@ -18,6 +18,7 @@ import Loading4 from './components/Loading/Loading4';
 import Loading5 from './components/Loading/Loading5';
 
 import Input from './components/Inputs/Input';
+import Dropdown from './components/Inputs/Dropdown';
 
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
@@ -27,6 +28,7 @@ function App() {
 	const [timeInput, setTimeInput] = useState('11:15');
 	const [checkboxInput, setCheckboxInput] = useState(true);
 	const [radioInput, setRadioInput] = useState('Cat');
+	const [dropdownInput, setDropdownInput] = useState('');
 
     return (
     	<div className='App'>
@@ -88,18 +90,25 @@ function App() {
 				<label>Other</label>
 				<Input type='radio' value={'Other'} onChange={setRadioInput} name='pet' checked={radioInput === 'Other'}/>
 
-				<br/>
-				<Input label='Text' labelWidth='120px' labelAlign='left' type='text' value={textInput} onChange={setTextInput} placeholder='Text Input'/>
-				<Input label='Password' labelWidth='120px' labelAlign='center' type='password' value={textInput} onChange={setTextInput} placeholder='Password Input'/>
-				<Input label='Number' labelWidth='120px' labelAlign='right' type='number' value={numberInput} onChange={setNumberInput} placeholder='Number Input'/>
-				<Input label='Color' type='color' value={colorInput} onChange={setColorInput}/>
-				<Input label='Date' type='date' value={dateInput} onChange={setDateInput}/>
-				<Input label='Time' type='time' value={timeInput} onChange={setTimeInput}/>
-				<Input label='Checkbox' type='checkbox' value={checkboxInput} onChange={setCheckboxInput}/>
+				<Heading text='Inputs with Label'/>
+				<Input labelText='Text' labelWidth={120} labelAlign='left' type='text' value={textInput} onChange={setTextInput} placeholder='Text Input'/>
+				<Input labelText='Password' labelWidth={120} labelAlign='center' type='password' value={textInput} onChange={setTextInput} placeholder='Password Input'/>
+				<Input labelText='Number' labelWidth={120} labelAlign='right' type='number' value={numberInput} onChange={setNumberInput} placeholder='Number Input'/>
+				<Input labelText='Color' type='color' value={colorInput} onChange={setColorInput}/>
+				<Input labelText='Date' type='date' value={dateInput} onChange={setDateInput}/>
+				<Input labelText='Time' type='time' value={timeInput} onChange={setTimeInput}/>
+				<Input labelText='Checkbox' type='checkbox' value={checkboxInput} onChange={setCheckboxInput}/>
 
-				<Input label='Cat' type='radio' value={'Cat'} onChange={setRadioInput} name='pet2' checked={radioInput === 'Cat'}/>
-				<Input label='Dog' type='radio' value={'Dog'} onChange={setRadioInput} name='pet2' checked={radioInput === 'Dog'}/>
-				<Input label='Other' type='radio' value={'Other'} onChange={setRadioInput} name='pet2' checked={radioInput === 'Other'}/>
+				<Input labelText='Cat' type='radio' value={'Cat'} onChange={setRadioInput} name='pet2' checked={radioInput === 'Cat'}/>
+				<Input labelText='Dog' type='radio' value={'Dog'} onChange={setRadioInput} name='pet2' checked={radioInput === 'Dog'}/>
+				<Input labelText='Other' type='radio' value={'Other'} onChange={setRadioInput} name='pet2' checked={radioInput === 'Other'}/>
+
+				<Heading text='Dropdowns'/>
+				<Dropdown placeholder='Please Select' value={dropdownInput} options={['Cat', 'Dog', 1, 2]} onChange={setDropdownInput}/>
+				<Dropdown placeholder='Please Select' value={dropdownInput} options={[{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}, {display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]} onChange={setDropdownInput}/>
+				<Dropdown placeholder='Please Select' value={dropdownInput} options={{'Pets': ['Cat', 'Dog'], 'Food': [1, 2]}} onChange={setDropdownInput}/>
+				<Dropdown placeholder='Please Select' value={dropdownInput} options={{'Pets': [{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}], 'Food': [{display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]}} onChange={setDropdownInput}/>
+				<Dropdown labelText='Dropdown' placeholder='Please Select' value={dropdownInput} options={{'Pets': [{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}], 'Food': [{display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]}} onChange={setDropdownInput}/>
 
 				<Heading text='Modals'/>
 				<Heading text='Tables'/>
