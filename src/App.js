@@ -89,9 +89,9 @@ function App() {
 				<Input type='radio' value={'Other'} onChange={setRadioInput} name='pet' checked={radioInput === 'Other'}/>
 
 				<br/>
-				<Input label='Text' type='text' value={textInput} onChange={setTextInput} placeholder='Text Input'/>
-				<Input label='Password' type='password' value={textInput} onChange={setTextInput} placeholder='Password Input'/>
-				<Input label='Number' type='number' value={numberInput} onChange={setNumberInput} placeholder='Number Input'/>
+				<Input label='Text' labelWidth='120px' labelAlign='left' type='text' value={textInput} onChange={setTextInput} placeholder='Text Input'/>
+				<Input label='Password' labelWidth='120px' labelAlign='center' type='password' value={textInput} onChange={setTextInput} placeholder='Password Input'/>
+				<Input label='Number' labelWidth='120px' labelAlign='right' type='number' value={numberInput} onChange={setNumberInput} placeholder='Number Input'/>
 				<Input label='Color' type='color' value={colorInput} onChange={setColorInput}/>
 				<Input label='Date' type='date' value={dateInput} onChange={setDateInput}/>
 				<Input label='Time' type='time' value={timeInput} onChange={setTimeInput}/>
