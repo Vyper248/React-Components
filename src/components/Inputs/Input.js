@@ -36,7 +36,7 @@ const StyledComp = styled.div`
         padding: 5px;
         border-radius: 5px;
         width: ${props => props.width+'px'};
-        ${props => props.label ? 'border-radius: 0px 5px 5px 0px;' : ''};
+        ${props => props.labelText ? 'border-radius: 0px 5px 5px 0px;' : ''};
     }
 
     & > input:focus {
@@ -72,7 +72,7 @@ const StyledComp = styled.div`
     }
 `;
 
-const Input = ({type='text', value, onChange, width=100, label='', labelWidth, labelAlign='right', ...rest}) => {
+const Input = ({type='text', value, onChange, width=100, labelText='', labelWidth, labelAlign='right', ...rest}) => {
     if (type === 'date' && width === 100) width = 142; //minimum width
 
     const changeInput = (e) => {
@@ -88,8 +88,8 @@ const Input = ({type='text', value, onChange, width=100, label='', labelWidth, l
     }
 
     return (
-        <StyledComp width={width} label={label && label.length > 0} labelWidth={labelWidth} labelAlign={labelAlign}>
-            { label && label.length > 0 ? <label>{label}</label> : null }
+        <StyledComp width={width} labelText={labelText && labelText.length > 0} labelWidth={labelWidth} labelAlign={labelAlign}>
+            { labelText && labelText.length > 0 ? <label>{labelText}</label> : null }
             <input type={type} value={value} onChange={changeInput} checked={type === 'checkbox' ? !!value : false} {...rest}/>
         </StyledComp>
     );
