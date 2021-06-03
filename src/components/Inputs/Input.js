@@ -22,7 +22,7 @@ const StyledComp = styled.div`
         background-color: rgb(239,239,239);
         position: relative;
         z-index: -1;
-        width: ${props => props.labelWidth ? props.labelWidth : ''};
+        width: ${props => props.labelWidth ? props.labelWidth+'px' : ''};
         ${props => props.labelAlign === 'right' ? 'justify-content: flex-end;' : ''}
         ${props => props.labelAlign === 'center' ? 'justify-content: center;' : ''}
         right: -15px; 
