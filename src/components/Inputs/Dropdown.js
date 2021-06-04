@@ -6,6 +6,7 @@ const StyledComp = styled.div`
     height: 28px;
     display: inline-flex;
     white-space: nowrap;
+    position: relative;
 
     & > label {
         border: 1px solid black;
@@ -32,18 +33,26 @@ const StyledComp = styled.div`
         border: 1px solid black;
         background-color: white;
         -webkit-appearance:none;
-        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAJCAYAAAA/33wPAAAAvklEQVQoFY2QMQqEMBBFv7ERa/EMXkGw11K8QbDXzuN4BHv7QO6ifUgj7v4UAdlVM8Uwf+b9YZJISnlqrfEUZVlinucnBGKaJgghbiHOyLyFKIoCbdvecpyReYvo/Ma2bajrGtbaC58kCdZ1RZ7nl/4/4d5EsO/7nzl7IUtodBexMMagaRrs+06JLMvcNWmaOv2W/C/TMAyD58dxROgSmvxFFMdxoOs6lliWBXEcuzokXRbRoJRyvqqqQvye+QDMDz1D6yuj9wAAAABJRU5ErkJggg==);
-        background-position : right center;
-        background-repeat: no-repeat;
         height: 100%;
         margin: 0px;
         display: inline-flex;
         align-items: center;
         font-size: 1em;
-        padding: 0px 5px;
+        padding: 0px 25px 0px 5px;
         border-radius: 5px;
         width: ${props => props.width+'px'};
         ${props => props.labelText ? 'border-radius: 0px 5px 5px 0px;' : ''};
+        text-overflow: ellipsis;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        right: 8px;
+        top: calc(50% - 5px);
+        border-top: 10px solid black;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
     }
 
     & > select:hover {
