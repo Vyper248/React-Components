@@ -83,11 +83,8 @@ function App() {
 				<Input type='checkbox' value={checkboxInput} onChange={setCheckboxInput}/>
 
 				<br/>
-				<label>Cat</label>
 				<Input type='radio' value={'Cat'} onChange={setRadioInput} name='pet' checked={radioInput === 'Cat'}/>
-				<label>Dog</label>
 				<Input type='radio' value={'Dog'} onChange={setRadioInput} name='pet' checked={radioInput === 'Dog'}/>
-				<label>Other</label>
 				<Input type='radio' value={'Other'} onChange={setRadioInput} name='pet' checked={radioInput === 'Other'}/>
 
 				<Heading text='Inputs with Label'/>
@@ -99,9 +96,9 @@ function App() {
 				<Input labelText='Time' type='time' value={timeInput} onChange={setTimeInput}/>
 				<Input labelText='Checkbox' type='checkbox' value={checkboxInput} onChange={setCheckboxInput}/>
 
-				<Input labelText='Cat' type='radio' value={'Cat'} onChange={setRadioInput} name='pet2' checked={radioInput === 'Cat'}/>
-				<Input labelText='Dog' type='radio' value={'Dog'} onChange={setRadioInput} name='pet2' checked={radioInput === 'Dog'}/>
-				<Input labelText='Other' type='radio' value={'Other'} onChange={setRadioInput} name='pet2' checked={radioInput === 'Other'}/>
+				<Input labelText='Cat' type='radio' value={'Cat'} onChange={setRadioInput} checked={radioInput === 'Cat'}/>
+				<Input labelText='Dog' type='radio' value={'Dog'} onChange={setRadioInput} checked={radioInput === 'Dog'}/>
+				<Input labelText='Other' type='radio' value={'Other'} onChange={setRadioInput} checked={radioInput === 'Other'}/>
 
 				<Heading text='Dropdowns'/>
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={['Cat', 'Dog', 1, 2]} onChange={setDropdownInput}/>

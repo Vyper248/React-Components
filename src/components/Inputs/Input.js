@@ -6,6 +6,7 @@ const StyledComp = styled.div`
     height: 28px;
     display: inline-flex;
     white-space: nowrap;
+    position: relative;
 
     & > label, & > input {
         border: 1px solid black;
@@ -58,17 +59,66 @@ const StyledComp = styled.div`
         padding: 2px 4px;
     }
 
-    & > input[type=checkbox] {
-        width: 30px;
+    & > input[type=checkbox],
+    & > input[type=radio] {
+        width: 28px;
+        opacity: 0;
+        pointer-events: none;
     }
 
-    & > input[type=checkbox]:hover,
-    & > input[type=radio]:hover {
+    & > input[type=radio] + span:hover,
+    & > input[type=checkbox] + span:hover {
         cursor: pointer;
     }
 
-    & > input[type=radio] {
-        width: 30px;
+    & > input[type=radio] + span {
+        display: inline-block;
+        border: 1px solid black;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        right: 0px;
+        background-color: white;
+    }
+
+    & > input[type=radio]:checked + span:after {
+        content: '';
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #077BFB;
+        position: absolute;
+        right: 5px;
+        top: calc(50% - 8px);
+    }
+
+    & > input[type=checkbox] + span {
+        display: inline-block;
+        border: 1px solid black;
+        border-radius: 5px;
+        ${props => props.labelText ? 'border-radius: 0px 5px 5px 0px;' : ''};
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        right: 0px;
+        background-color: white;
+    }
+
+    & > input[type=checkbox]:checked + span {
+        background-color: #077BFB;
+    }
+
+    & > input[type=checkbox]:checked + span:after {
+        content: '';
+        width: 5px;
+        height: 15px;
+        position: absolute;
+        right: 8px;
+        top: 2px;
+        border-bottom: 5px solid white;
+        border-right: 5px solid white;
+        transform: rotate(45deg);
     }
 `;
 
@@ -80,17 +130,21 @@ const Input = ({type='text', value, onChange, width=100, labelText='', labelWidt
             let number = parseFloat(e.target.value);
             if (isNaN(number)) number = '';
             onChange(number);
-        } else if (type === 'checkbox') {
-            onChange(e.target.checked);
         } else {
             onChange(e.target.value);
         }
+    }
+
+    const onClickSpan = () => {
+        if (type === 'checkbox') onChange(!value);
+        else if (type === 'radio') onChange(value);
     }
 
     return (
         <StyledComp width={width} labelText={labelText && labelText.length > 0} labelWidth={labelWidth} labelAlign={labelAlign}>
             { labelText && labelText.length > 0 ? <label>{labelText}</label> : <span></span> }
             <input type={type} value={value} onChange={changeInput} checked={type === 'checkbox' ? !!value : false} {...rest}/>
+            <span onClick={onClickSpan}></span>
         </StyledComp>
     );
 }
