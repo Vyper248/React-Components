@@ -1,4 +1,4 @@
-import react, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 
 import Container from './components/Container';
@@ -20,6 +20,8 @@ import Loading5 from './components/Loading/Loading5';
 import Input from './components/Inputs/Input';
 import Dropdown from './components/Inputs/Dropdown';
 
+import Table1 from './components/Tables/Table1';
+
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
 	const [numberInput, setNumberInput] = useState(5);
@@ -29,6 +31,15 @@ function App() {
 	const [checkboxInput, setCheckboxInput] = useState(true);
 	const [radioInput, setRadioInput] = useState('Cat');
 	const [dropdownInput, setDropdownInput] = useState('');
+
+	const tableData = [
+		['Bob', '12-12-1981', 'Nottingham', 'UK'],
+		['Emma', '04-05-1989', 'Sheffield', 'UK'],
+		['Emily', '08-02-1983', 'Mansfield', 'UK'],
+		['Dan', '01-07-1987', 'London', 'UK'],
+		['Phil', '27-10-1993', 'Cambridge', 'UK'],
+		['Heather', '16-05-1984', 'Paris', 'France']
+	];
 
     return (
     	<div className='App'>
@@ -101,14 +112,17 @@ function App() {
 				<Input labelText='Other' type='radio' value={'Other'} onChange={setRadioInput} checked={radioInput === 'Other'}/>
 
 				<Heading text='Dropdowns'/>
+				<p>Check code for differences in how to use options.</p>
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={['Cat', 'Dog', 1, 2]} onChange={setDropdownInput}/>
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={[{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}, {display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]} onChange={setDropdownInput}/>
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={{'Pets': ['Cat', 'Dog'], 'Food': [1, 2]}} onChange={setDropdownInput}/>
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={{'Pets': [{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}], 'Food': [{display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]}} onChange={setDropdownInput}/>
 				<Dropdown labelText='Dropdown' placeholder='Please Select' value={dropdownInput} options={{'Pets': [{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}], 'Food': [{display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]}} onChange={setDropdownInput}/>
 
-				<Heading text='Modals'/>
 				<Heading text='Tables'/>
+				<Table1 tableHeading='Basic Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
+
+				<Heading text='Modals'/>
 			</Container>
 			<div style={{marginBottom: '500px'}}></div>
 		</div>
