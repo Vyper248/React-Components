@@ -22,6 +22,7 @@ import Dropdown from './components/Inputs/Dropdown';
 
 import TableBasic from './components/Tables/TableBasic';
 import TableSortable from './components/Tables/TableSortable';
+import TableSearchable from './components/Tables/TableSearchable';
 
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
@@ -123,6 +124,7 @@ function App() {
 				<Heading text='Tables'/>
 				<TableBasic tableHeading='Basic Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
 				<TableSortable tableHeading='Sortable Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
+				<TableSearchable tableHeading='Searchable Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
 
 				<Heading text='Modals'/>
 			</Container>
