@@ -21,6 +21,7 @@ import Input from './components/Inputs/Input';
 import Dropdown from './components/Inputs/Dropdown';
 
 import Table1 from './components/Tables/Table1';
+import TableSortable from './components/Tables/TableSortable';
 
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
@@ -33,12 +34,12 @@ function App() {
 	const [dropdownInput, setDropdownInput] = useState('');
 
 	const tableData = [
-		['Bob', '12-12-1981', 'Nottingham', 'UK'],
-		['Emma', '04-05-1989', 'Sheffield', 'UK'],
-		['Emily', '08-02-1983', 'Mansfield', 'UK'],
-		['Dan', '01-07-1987', 'London', 'UK'],
-		['Phil', '27-10-1993', 'Cambridge', 'UK'],
-		['Heather', '16-05-1984', 'Paris', 'France']
+		['Bob', '1981-12-12', 'Nottingham', 'UK'],
+		['Emma', '1989-05-04', 'Sheffield', 'UK'],
+		['Emily', '1983-02-08', 'Mansfield', 'UK'],
+		['Dan', '1987-07-01', 'London', 'UK'],
+		['Phil', '1993-10-27', 'Cambridge', 'UK'],
+		['Heather', '1984-05-16', 'Paris', 'France']
 	];
 
     return (
@@ -112,7 +113,7 @@ function App() {
 				<Input labelText='Other' type='radio' value={'Other'} onChange={setRadioInput} checked={radioInput === 'Other'}/>
 
 				<Heading text='Dropdowns'/>
-				<p>Check code for differences in how to use options.</p>
+				<p>(Check code for differences in how to use options.)</p>
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={['Cat', 'Dog', 1, 2]} onChange={setDropdownInput}/>
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={[{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}, {display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]} onChange={setDropdownInput}/>
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={{'Pets': ['Cat', 'Dog'], 'Food': [1, 2]}} onChange={setDropdownInput}/>
@@ -121,6 +122,7 @@ function App() {
 
 				<Heading text='Tables'/>
 				<Table1 tableHeading='Basic Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
+				<TableSortable tableHeading='Sortable Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
 
 				<Heading text='Modals'/>
 			</Container>

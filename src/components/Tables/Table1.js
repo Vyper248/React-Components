@@ -54,7 +54,7 @@ const StyledContainer = styled.div`
     }
 `;
 
-const Table = ({tableHeading='', header=[], data=[]}) => {
+const Table1 = ({tableHeading='', header=[], data=[]}) => {
     return (
         <StyledContainer>
             { tableHeading.length > 0 ? <h4>{tableHeading}</h4> : null }
@@ -72,4 +72,4 @@ const Table = ({tableHeading='', header=[], data=[]}) => {
     );
 }
 
-export default Table;
+export default Table1;
