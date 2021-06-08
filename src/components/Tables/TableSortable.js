@@ -30,7 +30,7 @@ const StyledComp = styled.table`
         background-color: #AAA;
     }
 
-    #id${props => props.sortBy}::after {
+    & #id${props => props.sortBy}::after {
         content: '';
         display: inline-block;
         position: absolute;
