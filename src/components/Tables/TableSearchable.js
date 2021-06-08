@@ -29,10 +29,6 @@ const StyledComp = styled.table`
         border-right: none;
     }
 
-    tr {
-        border-bottom: 1px solid black;
-    }
-
     tr:last-child {
         border-bottom: none;
     }
