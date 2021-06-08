@@ -19,6 +19,7 @@ import Loading5 from './components/Loading/Loading5';
 
 import Input from './components/Inputs/Input';
 import Dropdown from './components/Inputs/Dropdown';
+import DropdownCustom from './components/Inputs/DropdownCustom';
 
 import TableBasic from './components/Tables/TableBasic';
 import TableSortable from './components/Tables/TableSortable';
@@ -120,6 +121,11 @@ function App() {
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={{'Pets': ['Cat', 'Dog'], 'Food': [1, 2]}} onChange={setDropdownInput}/>
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={{'Pets': [{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}], 'Food': [{display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]}} onChange={setDropdownInput}/>
 				<Dropdown labelText='Dropdown' placeholder='Please Select' value={dropdownInput} options={{'Pets': [{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}], 'Food': [{display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]}} onChange={setDropdownInput}/>
+				<br/>
+				<DropdownCustom placeholder='Please Select' value={dropdownInput} options={['Cat', 'Dog', 1, 2]} onChange={setDropdownInput}/>
+				<DropdownCustom placeholder='Please Select' value={dropdownInput} options={[{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}, {display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]} onChange={setDropdownInput}/>
+				<DropdownCustom placeholder='Please Select' value={dropdownInput} options={{'Pets': ['Cat', 'Dog'], 'Food': [1, 2]}} onChange={setDropdownInput}/>
+				<DropdownCustom placeholder='Please Select' value={dropdownInput} options={{'Pets': [{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}], 'Food': [{display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]}} onChange={setDropdownInput}/>
 
 				<Heading text='Tables'/>
 				<TableBasic tableHeading='Basic Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
