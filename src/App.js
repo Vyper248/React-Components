@@ -20,7 +20,7 @@ import Loading5 from './components/Loading/Loading5';
 import Input from './components/Inputs/Input';
 import Dropdown from './components/Inputs/Dropdown';
 
-import Table1 from './components/Tables/Table1';
+import TableBasic from './components/Tables/TableBasic';
 import TableSortable from './components/Tables/TableSortable';
 
 function App() {
@@ -121,7 +121,7 @@ function App() {
 				<Dropdown labelText='Dropdown' placeholder='Please Select' value={dropdownInput} options={{'Pets': [{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}], 'Food': [{display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]}} onChange={setDropdownInput}/>
 
 				<Heading text='Tables'/>
-				<Table1 tableHeading='Basic Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
+				<TableBasic tableHeading='Basic Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
 				<TableSortable tableHeading='Sortable Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
 
 				<Heading text='Modals'/>
