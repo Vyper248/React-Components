@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react';
+import { useState, useEffect, useRef, Fragment } from 'react';
 import styled from 'styled-components';
 
 const StyledComp = styled.div`
@@ -48,9 +48,9 @@ const StyledComp = styled.div`
         top: 100%;
         opacity: ${props => props.open ? '1' : '0'};
         height: ${props => props.open ? props.height+'px' : '0px'};
-        z-index: 20;
+        z-index: 200;
         ${props => props.open ? 'transition: height 0.3s, opacity 0s' : 'transition: height 0.3s, opacity 0s 0.3s'};
-        overflow: hidden;
+        overflow: ${props => props.overflow};
     }
 
     & > div#options > div {
@@ -58,7 +58,26 @@ const StyledComp = styled.div`
         border-bottom: 1px solid black;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        padding-left: 22px;
+        position: relative;
+    }
+
+    & > div#options > div:last-child {
+        border-bottom: none;
+    }
+
+    & > div#options > div.selected:before {
+        content: '';
+        width: 0px;
+        height: 0px;
+        display: block;
+        position: absolute;
+        left: 5px;
+        top: calc(50% - 5px);
+        border-left: 10px solid blue;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
     }
 
     & > div#options > div:hover {
@@ -69,6 +88,7 @@ const StyledComp = styled.div`
     & > div#options > div.groupHeading {
         font-weight: bold;
         background-color: #DDD;
+        padding-left: 10px;
     }
 
     & > div#options > div.groupHeading:hover {
@@ -78,6 +98,23 @@ const StyledComp = styled.div`
 
 const DropdownCustom = ({placeholder='Select an Option', labelText='', width=150, value, options=[], onChange}) => {
     const [open, setOpen] = useState(false);
+    const [maxHeight, setMaxHeight] = useState(168);
+    const [overflow, setOverflow] = useState('hidden');
+    const ref = useRef(null);
+
+    useEffect(() => {
+        const onClickOutside = (e) => {
+            if (ref.current && !ref.current.contains(e.target)) {
+                setOpen(false);
+            }
+        }
+
+        document.addEventListener('click', onClickOutside);
+        return () => {
+            document.removeEventListener('click', onClickOutside);
+        }
+
+    }, [ref]);
     
     let type;
     if (Array.isArray(options) && options.length === 0) return <StyledComp width={width}></StyledComp>;
@@ -94,9 +131,27 @@ const DropdownCustom = ({placeholder='Select an Option', labelText='', width=150
             height += arr.length * 28;
         });
     }
+    height++;
 
     const onClickDropdown = () => {
         setOpen(!open);
+
+        //auto adjust height based on current screen height and dropdown position
+        //will only go off the bottom of the screen if it's too close
+        if (ref.current && !open) {
+            let rect = ref.current.getBoundingClientRect();
+            let screenHeight = window.innerHeight;
+            let difference = screenHeight - rect.bottom;
+            let maxHeight = difference - 10;
+            let minHeight = (28 * 6) + 10;
+            if (maxHeight < height) setOverflow('scroll');
+            if (maxHeight < minHeight) maxHeight = minHeight;
+            if (maxHeight > height) {
+                maxHeight = height;
+                setOverflow('hidden');
+            }
+            setMaxHeight(maxHeight);
+        }
     }
 
     const onClickOption = (value) => () => {
@@ -129,12 +184,12 @@ const DropdownCustom = ({placeholder='Select an Option', labelText='', width=150
     displayText = String(displayText);
 
     if (type === 'advanced') return (
-        <StyledComp width={width} open={open} height={height}>
+        <StyledComp ref={ref} width={width} open={open} height={maxHeight} overflow={overflow}>
             <div id='dropdown' onClick={onClickDropdown}>{displayText.length > 0 ? displayText : placeholder}</div>
             <div id='options'>
                 {
                     options.map(obj => {
-                        return <div onClick={onClickOption(obj.value)}>{obj.display}</div>
+                        return <div key={`option-${obj.value}`} onClick={onClickOption(obj.value)} className={obj.value === value ? 'selected' : ''}>{obj.display}</div>
                     })
                 }
             </div>
@@ -142,16 +197,16 @@ const DropdownCustom = ({placeholder='Select an Option', labelText='', width=150
     );
 
     if (type === 'basic') return (
-        <StyledComp width={width} open={open} height={height}>
+        <StyledComp ref={ref} width={width} open={open} height={maxHeight} overflow={overflow}>
             <div id='dropdown' onClick={onClickDropdown}>{displayText.length > 0 ? displayText : placeholder}</div>
             <div id='options'>
-                { options.map(obj => <div onClick={onClickOption(obj)}>{obj}</div>) }
+                { options.map(str => <div key={`option-${str}`} onClick={onClickOption(str)} className={str === value ? 'selected' : ''}>{str}</div>) }
             </div>
         </StyledComp>
     );
 
     if (type === 'groups') return (
-        <StyledComp width={width} open={open} height={height}>
+        <StyledComp ref={ref} width={width} open={open} height={maxHeight} overflow={overflow}>
             <div id='dropdown' onClick={onClickDropdown}>{displayText.length > 0 ? displayText : placeholder}</div>
             <div id='options'>
                 { 
@@ -160,15 +215,17 @@ const DropdownCustom = ({placeholder='Select an Option', labelText='', width=150
                         let subtype = 'basic';
                         if (typeof arr[0] === 'object') subtype = 'advanced';
                         
-                        if (subtype === 'basic') return <Fragment>
+                        if (subtype === 'basic') return <Fragment key={`option-group-${groupHeading}`}>
                             <div className='groupHeading'>{groupHeading}</div>
-                            { arr.map(value => <div onClick={onClickOption(value)}>{value}</div>)}
+                            { arr.map(str => <div key={`option-${str}`} onClick={onClickOption(str)} className={str === value ? 'selected' : ''}>{str}</div>)}
                         </Fragment>;
 
-                        if (subtype === 'advanced') return <Fragment>
+                        if (subtype === 'advanced') return <Fragment key={`option-group-${groupHeading}`}>
                             <div className='groupHeading'>{groupHeading}</div>
-                            { arr.map(obj => <div onClick={onClickOption(obj.value)}>{obj.display}</div>)}
+                            { arr.map(obj => <div key={`option-${obj.value}`} onClick={onClickOption(obj.value)} className={obj.value === value ? 'selected' : ''}>{obj.display}</div>)}
                         </Fragment>;
+
+                        return null;
                     })
                 }
             </div>
