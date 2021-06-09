@@ -15,9 +15,9 @@ const StyledComp = styled.div`
         height: 100%;
         padding: 0px 25px 0px 5px;
         border-radius: 5px;
-        ${props => props.open ? 'border-radius: 5px 5px 0px 0px' : 'border-radius: 5px'};
         width: ${props => props.width+'px'};
         ${props => props.labelText ? 'border-radius: 0px 5px 5px 0px;' : ''};
+        ${props => props.open ? 'border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;' : ''};
         text-overflow: ellipsis;
         ${props => props.open ? 'transition: border-radius 0s' : 'transition: border-radius 0s 0.3s'};
         ${props => props.open ? 'border: 1px solid blue' : 'border: 1px solid black'};
@@ -96,7 +96,28 @@ const StyledComp = styled.div`
     }
 `;
 
-const DropdownCustom = ({placeholder='Select an Option', labelText='', width=150, value, options=[], onChange}) => {
+const StyledLabel = styled.label`
+    border: 1px solid black;
+    height: 28px;
+    margin: 0px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1em;
+    padding: 0px 10px;
+    background-color: rgb(239,239,239);
+    position: relative;
+    z-index: -1;
+    width: ${props => props.labelWidth ? props.labelWidth+'px' : ''};
+    ${props => props.labelAlign === 'right' ? 'justify-content: flex-end;' : ''}
+    ${props => props.labelAlign === 'center' ? 'justify-content: center;' : ''}
+    right: -20px; 
+    padding-right: 25px; 
+    border-right: none; 
+    margin-left: -15px; 
+    border-radius: 5px 0px 0px 5px;
+`;
+
+const DropdownCustom = ({placeholder='Select an Option', labelText='', labelAlign='right', labelWidth, width=150, value, options=[], onChange}) => {
     const [open, setOpen] = useState(false);
     const [maxHeight, setMaxHeight] = useState(168);
     const [overflow, setOverflow] = useState('hidden');
@@ -184,52 +205,61 @@ const DropdownCustom = ({placeholder='Select an Option', labelText='', width=150
     displayText = String(displayText);
 
     if (type === 'advanced') return (
-        <StyledComp ref={ref} width={width} open={open} height={maxHeight} overflow={overflow}>
-            <div id='dropdown' onClick={onClickDropdown}>{displayText.length > 0 ? displayText : placeholder}</div>
-            <div id='options'>
-                {
-                    options.map(obj => {
-                        return <div key={`option-${obj.value}`} onClick={onClickOption(obj.value)} className={obj.value === value ? 'selected' : ''}>{obj.display}</div>
-                    })
-                }
-            </div>
-        </StyledComp>
+        <div style={{display: 'inline-block'}}>
+            { labelText.length > 0 ? <StyledLabel labelWidth={labelWidth} labelAlign={labelAlign}>{labelText}</StyledLabel> : null }
+            <StyledComp ref={ref} width={width} open={open} height={maxHeight} overflow={overflow} labelText={labelText}>
+                <div id='dropdown' onClick={onClickDropdown}>{displayText.length > 0 ? displayText : placeholder}</div>
+                <div id='options'>
+                    {
+                        options.map(obj => {
+                            return <div key={`option-${obj.value}`} onClick={onClickOption(obj.value)} className={obj.value === value ? 'selected' : ''}>{obj.display}</div>
+                        })
+                    }
+                </div>
+            </StyledComp>
+        </div>
     );
 
     if (type === 'basic') return (
-        <StyledComp ref={ref} width={width} open={open} height={maxHeight} overflow={overflow}>
-            <div id='dropdown' onClick={onClickDropdown}>{displayText.length > 0 ? displayText : placeholder}</div>
-            <div id='options'>
-                { options.map(str => <div key={`option-${str}`} onClick={onClickOption(str)} className={str === value ? 'selected' : ''}>{str}</div>) }
-            </div>
-        </StyledComp>
+        <div style={{display: 'inline-block'}}>
+            { labelText.length > 0 ? <StyledLabel labelWidth={labelWidth} labelAlign={labelAlign}>{labelText}</StyledLabel> : null }
+            <StyledComp ref={ref} width={width} open={open} height={maxHeight} overflow={overflow} labelText={labelText}>
+                <div id='dropdown' onClick={onClickDropdown}>{displayText.length > 0 ? displayText : placeholder}</div>
+                <div id='options'>
+                    { options.map(str => <div key={`option-${str}`} onClick={onClickOption(str)} className={str === value ? 'selected' : ''}>{str}</div>) }
+                </div>
+            </StyledComp>
+        </div>
     );
 
     if (type === 'groups') return (
-        <StyledComp ref={ref} width={width} open={open} height={maxHeight} overflow={overflow}>
-            <div id='dropdown' onClick={onClickDropdown}>{displayText.length > 0 ? displayText : placeholder}</div>
-            <div id='options'>
-                { 
-                    Object.keys(options).map(groupHeading => {
-                        let arr = options[groupHeading];
-                        let subtype = 'basic';
-                        if (typeof arr[0] === 'object') subtype = 'advanced';
-                        
-                        if (subtype === 'basic') return <Fragment key={`option-group-${groupHeading}`}>
-                            <div className='groupHeading'>{groupHeading}</div>
-                            { arr.map(str => <div key={`option-${str}`} onClick={onClickOption(str)} className={str === value ? 'selected' : ''}>{str}</div>)}
-                        </Fragment>;
+        <div style={{display: 'inline-block'}}>
+            { labelText.length > 0 ? <StyledLabel labelWidth={labelWidth} labelAlign={labelAlign}>{labelText}</StyledLabel> : null }
+            <StyledComp ref={ref} width={width} open={open} height={maxHeight} overflow={overflow} labelText={labelText}>
+                <div id='dropdown' onClick={onClickDropdown}>{displayText.length > 0 ? displayText : placeholder}</div>
+                <div id='options'>
+                    { 
+                        Object.keys(options).map(groupHeading => {
+                            let arr = options[groupHeading];
+                            let subtype = 'basic';
+                            if (typeof arr[0] === 'object') subtype = 'advanced';
+                            
+                            if (subtype === 'basic') return <Fragment key={`option-group-${groupHeading}`}>
+                                <div className='groupHeading'>{groupHeading}</div>
+                                { arr.map(str => <div key={`option-${str}`} onClick={onClickOption(str)} className={str === value ? 'selected' : ''}>{str}</div>)}
+                            </Fragment>;
 
-                        if (subtype === 'advanced') return <Fragment key={`option-group-${groupHeading}`}>
-                            <div className='groupHeading'>{groupHeading}</div>
-                            { arr.map(obj => <div key={`option-${obj.value}`} onClick={onClickOption(obj.value)} className={obj.value === value ? 'selected' : ''}>{obj.display}</div>)}
-                        </Fragment>;
+                            if (subtype === 'advanced') return <Fragment key={`option-group-${groupHeading}`}>
+                                <div className='groupHeading'>{groupHeading}</div>
+                                { arr.map(obj => <div key={`option-${obj.value}`} onClick={onClickOption(obj.value)} className={obj.value === value ? 'selected' : ''}>{obj.display}</div>)}
+                            </Fragment>;
 
-                        return null;
-                    })
-                }
-            </div>
-        </StyledComp>
+                            return null;
+                        })
+                    }
+                </div>
+            </StyledComp>
+        </div>
     );
 
     return <div>Dropdown Error: Incorrect format for Dropdown options.</div>;

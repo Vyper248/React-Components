@@ -125,7 +125,7 @@ function App() {
 				<DropdownCustom placeholder='Please Select' value={dropdownInput} options={['Cat', 'Dog', 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]} onChange={setDropdownInput}/>
 				<DropdownCustom placeholder='Please Select' value={dropdownInput} options={[{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}, {display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]} onChange={setDropdownInput}/>
 				<DropdownCustom placeholder='Please Select' value={dropdownInput} options={{'Pets': ['Cat', 'Dog'], 'Food': [1, 2]}} onChange={setDropdownInput}/>
-				<DropdownCustom placeholder='Please Select' value={dropdownInput} options={{'Pets': [{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}], 'Food': [{display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]}} onChange={setDropdownInput}/>
+				<DropdownCustom labelText='Custom Dropdown' placeholder='Please Select' value={dropdownInput} options={{'Pets': [{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}], 'Food': [{display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]}} onChange={setDropdownInput}/>
 
 				<Heading text='Tables'/>
 				<TableBasic tableHeading='Basic Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
