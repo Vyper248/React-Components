@@ -6,8 +6,10 @@ const StyledComp = styled.table`
     width: auto;
 
     th, td {
-        padding: 5px 10px;
-        border-right: 1px solid black;
+        padding: 7px 10px;
+        ${props => props.size === 'small' ? 'padding: 4px 7px;' : ''};
+        ${props => props.size === 'large' ? 'padding: 10px 15px;' : ''};
+        border-right: 1px solid #CCC;
     }
 
     th:first-child {
@@ -19,8 +21,8 @@ const StyledComp = styled.table`
     }
 
     th {
-        border-bottom: 2px solid black;
-        background-color: #CCC;
+        border-bottom: 1px solid black;
+        background-color: #DDD;
         min-width: 100px;
     }
 
@@ -62,7 +64,7 @@ const StyledContainer = styled.div`
     }
 `;
 
-const TableSearchable = ({tableHeading='', header=[], data=[]}) => {
+const TableSearchable = ({tableHeading='', header=[], data=[], size='medium'}) => {
     const [search, setSearch] = useState('');
     const onChangeSearch = (e) => {
         setSearch(e.target.value);
@@ -83,7 +85,7 @@ const TableSearchable = ({tableHeading='', header=[], data=[]}) => {
         <StyledContainer>
             { tableHeading.length > 0 ? <h4>{tableHeading}</h4> : null }
             <div><input placeholder='Search' value={search} onChange={onChangeSearch}/></div>
-            <StyledComp>
+            <StyledComp size={size}>
                 <thead>
                     <tr>
                         { header.map((a,i) => <th key={`thead-${i}-${a}`}>{a}</th>) }

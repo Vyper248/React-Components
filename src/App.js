@@ -128,9 +128,11 @@ function App() {
 				<DropdownCustom labelText='Custom Dropdown' placeholder='Please Select' value={dropdownInput} options={{'Pets': [{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}], 'Food': [{display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]}} onChange={setDropdownInput}/>
 
 				<Heading text='Tables'/>
-				<TableBasic tableHeading='Basic Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
 				<TableSortable tableHeading='Sortable Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
 				<TableSearchable tableHeading='Searchable Table' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
+				<TableBasic tableHeading='Basic Small Table' size='small' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
+				<TableBasic tableHeading='Basic Medium Table' size='medium' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
+				<TableBasic tableHeading='Basic Large Table' size='large' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
 
 				<Heading text='Modals'/>
 			</Container>

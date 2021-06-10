@@ -6,8 +6,10 @@ const StyledComp = styled.table`
     width: auto;
 
     th, td {
-        padding: 5px 10px;
-        border-right: 1px solid black;
+        padding: 7px 10px;
+        ${props => props.size === 'small' ? 'padding: 4px 7px;' : ''};
+        ${props => props.size === 'large' ? 'padding: 10px 15px;' : ''};
+        border-right: 1px solid #CCC;
     }
 
     th:first-child {
@@ -19,8 +21,8 @@ const StyledComp = styled.table`
     }
 
     th {
-        border-bottom: 2px solid black;
-        background-color: #CCC;
+        border-bottom: 1px solid black;
+        background-color: #DDD;
         min-width: 100px;
         position: relative;
     }
@@ -69,7 +71,7 @@ const StyledContainer = styled.div`
     }
 `;
 
-const TableSortable = ({tableHeading='', header=[], data=[]}) => {
+const TableSortable = ({tableHeading='', header=[], data=[], size='medium'}) => {
     const [sortBy, setSortBy] = useState(0);
     const [sortOrder, setSortOrder] = useState(1);
 
@@ -88,7 +90,7 @@ const TableSortable = ({tableHeading='', header=[], data=[]}) => {
     return (
         <StyledContainer>
             { tableHeading.length > 0 ? <h4>{tableHeading}</h4> : null }
-            <StyledComp sortBy={sortBy} sortOrder={sortOrder}>
+            <StyledComp sortBy={sortBy} sortOrder={sortOrder} size={size}>
                 <thead>
                     <tr>
                         { header.map((a,i) => <th id={`id${i}`} key={`thead-${i}-${a}`} onClick={onClickHeading(i)}>{a}</th>) }
