@@ -25,6 +25,8 @@ import TableBasic from './components/Tables/TableBasic';
 import TableSortable from './components/Tables/TableSortable';
 import TableSearchable from './components/Tables/TableSearchable';
 
+import Modal from './components/Modals/Modal';
+
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
 	const [numberInput, setNumberInput] = useState(5);
@@ -34,6 +36,7 @@ function App() {
 	const [checkboxInput, setCheckboxInput] = useState(true);
 	const [radioInput, setRadioInput] = useState('Cat');
 	const [dropdownInput, setDropdownInput] = useState('');
+	const [modal1Open, setModal1Open] = useState(false);
 
 	const tableData = [
 		['Bob', '1981-12-12', 'Nottingham', 'UK'],
@@ -135,6 +138,16 @@ function App() {
 				<TableBasic tableHeading='Basic Large Table' size='large' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
 
 				<Heading text='Modals'/>
+				<BasicButton onClick={() => setModal1Open(true)} label='Open Basic'/>
+				<Modal open={modal1Open} width='800px'>
+					<h2>Modal</h2>
+					<div>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</div>
+					<div>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</div>
+					<div>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</div>
+					<div>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</div>
+					<footer><BasicButton onClick={() => setModal1Open(false)} label='Close'/></footer>
+				</Modal>
+
 			</Container>
 			<div style={{marginBottom: '500px'}}></div>
 		</div>
