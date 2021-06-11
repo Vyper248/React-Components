@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 
-import Container from './components/Container';
+import Container from './components/Containers/Container';
 import Header from './components/Header';
 import Heading from './components/Heading';
 
@@ -26,6 +26,8 @@ import TableSortable from './components/Tables/TableSortable';
 import TableSearchable from './components/Tables/TableSearchable';
 
 import Modal from './components/Modals/Modal';
+
+import TabbedContainer from './components/Containers/TabbedContainer';
 
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
@@ -143,6 +145,25 @@ function App() {
 				<BasicButton onClick={() => setModal1Open(true)} label='Open Small'/>
 				<BasicButton onClick={() => setModal2Open(true)} label='Open Medium'/>
 				<BasicButton onClick={() => setModal3Open(true)} label='Open Large'/>
+				
+				<Heading text='Containers'/>
+				<TabbedContainer>
+					<div>
+						<h4>Page 1</h4>
+						<div>Aliquip et occaecat sit ex reprehenderit aliquip incididunt occaecat in aliqua pariatur aliquip. Minim ad velit id aliquip dolore non incididunt. Veniam aliquip veniam excepteur nostrud aute incididunt anim sint voluptate enim sint.</div>
+					</div>
+					<div>
+						<h4>Page 2</h4>
+						<div>Aliquip et occaecat sit ex reprehenderit aliquip incididunt occaecat in aliqua pariatur aliquip. Minim ad velit id aliquip dolore non incididunt. Veniam aliquip veniam excepteur nostrud aute incididunt anim sint voluptate enim sint.</div>
+					</div>
+					<div>
+						<h4>Page 3</h4>
+						<div>Aliquip et occaecat sit ex reprehenderit aliquip incididunt occaecat in aliqua pariatur aliquip. Minim ad velit id aliquip dolore non incididunt. Veniam aliquip veniam excepteur nostrud aute incididunt anim sint voluptate enim sint.</div>
+					</div>
+				</TabbedContainer>
+
+
+				{/* Modals should be at the end to prevent possible glitches */}
 				<Modal open={modal1Open} width='400px' closeFunc={() => setModal1Open(false)} closeOnClickOutside={true}>
 					<section>
 						<p>Basic small modal with text</p>
@@ -192,7 +213,6 @@ function App() {
 					</section>
 					<footer><BasicButton onClick={() => setModal3Open(false)} label='Close'/></footer>
 				</Modal>
-
 			</Container>
 			<div style={{marginBottom: '500px'}}></div>
 		</div>
