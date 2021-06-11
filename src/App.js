@@ -37,6 +37,8 @@ function App() {
 	const [radioInput, setRadioInput] = useState('Cat');
 	const [dropdownInput, setDropdownInput] = useState('');
 	const [modal1Open, setModal1Open] = useState(false);
+	const [modal2Open, setModal2Open] = useState(false);
+	const [modal3Open, setModal3Open] = useState(false);
 
 	const tableData = [
 		['Bob', '1981-12-12', 'Nottingham', 'UK'],
@@ -138,14 +140,57 @@ function App() {
 				<TableBasic tableHeading='Basic Large Table' size='large' header={['Name', 'Date', 'City', 'Country']} data={tableData}/>
 
 				<Heading text='Modals'/>
-				<BasicButton onClick={() => setModal1Open(true)} label='Open Basic'/>
-				<Modal open={modal1Open} width='800px'>
-					<h2>Modal</h2>
-					<div>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</div>
-					<div>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</div>
-					<div>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</div>
-					<div>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</div>
-					<footer><BasicButton onClick={() => setModal1Open(false)} label='Close'/></footer>
+				<BasicButton onClick={() => setModal1Open(true)} label='Open Small'/>
+				<BasicButton onClick={() => setModal2Open(true)} label='Open Medium'/>
+				<BasicButton onClick={() => setModal3Open(true)} label='Open Large'/>
+				<Modal open={modal1Open} width='400px' closeFunc={() => setModal1Open(false)} closeOnClickOutside={true}>
+					<section>
+						<p>Basic small modal with text</p>
+						<p>Can click outside to close if property is set</p>
+						<div><BasicButton onClick={() => setModal1Open(false)} label='Close'/></div>
+					</section>
+				</Modal>
+				<Modal open={modal2Open} width='600px'>
+					<header>
+						<h2>Medium Modal</h2>
+					</header>
+					<section>
+						<p>Medium sized modal with header and footer. Can only close using the button</p>
+						<p>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</p>
+						<p>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</p>
+					</section>
+					<footer><BasicButton onClick={() => setModal2Open(false)} label='Close'/></footer>
+				</Modal>
+				<Modal open={modal3Open} width='1000px' closeFunc={() => setModal3Open(false)} closeOnClickOutside={true}>
+					<header>
+						<h2>Large Modal</h2>
+					</header>
+					<section>
+						<p>Larger modal with long content section to show scrolling. </p>
+						<p>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</p>
+						<p>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</p>
+						<p>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</p>
+						<p>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</p>
+						<p>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</p>
+						<p>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</p>
+						<p>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</p>
+						<p>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</p>
+						<p>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</p>
+						<p>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</p>
+						<p>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</p>
+						<p>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</p>
+						<p>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</p>
+						<p>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</p>
+						<p>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</p>
+						<p>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</p>
+						<p>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</p>
+						<p>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</p>
+						<p>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</p>
+						<p>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</p>
+						<p>Cillum qui minim do nostrud dolore enim commodo officia laboris. Eiusmod sint eu sunt commodo ullamco cillum. Ex voluptate incididunt consectetur adipisicing do. Pariatur sint ullamco eu nostrud officia deserunt aliquip occaecat exercitation est et irure deserunt dolor. Cupidatat velit do eu velit sit elit fugiat.</p>
+						<p>Ipsum quis mollit excepteur cupidatat aute dolor dolore excepteur excepteur aliqua culpa est reprehenderit. Nostrud mollit Lorem sint aliqua ullamco veniam esse eu. Commodo nisi velit eu anim aliqua do laboris id ut adipisicing.</p>
+					</section>
+					<footer><BasicButton onClick={() => setModal3Open(false)} label='Close'/></footer>
 				</Modal>
 
 			</Container>
