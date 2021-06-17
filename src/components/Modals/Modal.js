@@ -20,7 +20,7 @@ const StyledComp = styled.div`
 
     & > #content {
         position: fixed;
-        background-color: #EEE;
+        background-color: #FFF;
         border: 1px solid #AAA;
         border-radius: 5px;
         width: ${props => props.width};
