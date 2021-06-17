@@ -147,21 +147,60 @@ function App() {
 				<BasicButton onClick={() => setModal3Open(true)} label='Open Large'/>
 				
 				<Heading text='Containers'/>
-				<TabbedContainer>
+				<TabbedContainer tabNames={['Tab 1', 'Page 2', 'Other']}>
 					<div>
-						<h4>Page 1</h4>
-						<div>Aliquip et occaecat sit ex reprehenderit aliquip incididunt occaecat in aliqua pariatur aliquip. Minim ad velit id aliquip dolore non incididunt. Veniam aliquip veniam excepteur nostrud aute incididunt anim sint voluptate enim sint.</div>
+						<h4>Custom Tab Names</h4>
+						<p>Aliquip et occaecat sit ex reprehenderit aliquip incididunt occaecat in aliqua pariatur aliquip. Minim ad velit id aliquip dolore non incididunt. Veniam aliquip veniam excepteur nostrud aute incididunt anim sint voluptate enim sint.</p>
+						<p>Nisi proident ex exercitation reprehenderit magna irure sunt cupidatat ex enim id enim. Irure culpa anim do et consequat id magna occaecat adipisicing anim nisi reprehenderit. Nulla magna cupidatat ex minim velit sit exercitation magna proident. Lorem nisi incididunt dolore ullamco ipsum sit commodo. Officia dolor sit adipisicing aliquip dolore ad.</p>
 					</div>
 					<div>
 						<h4>Page 2</h4>
-						<div>Aliquip et occaecat sit ex reprehenderit aliquip incididunt occaecat in aliqua pariatur aliquip. Minim ad velit id aliquip dolore non incididunt. Veniam aliquip veniam excepteur nostrud aute incididunt anim sint voluptate enim sint.</div>
+						<p>Tempor fugiat voluptate eiusmod ex aliquip amet. Anim eu aliqua est id. Laboris adipisicing cillum officia adipisicing nostrud. Nulla cupidatat ad ullamco officia. Do nostrud proident cillum aute. In aliquip eu Lorem commodo consectetur nisi est cillum fugiat excepteur voluptate sit dolor.</p>
+						<p>Consectetur do incididunt reprehenderit nulla nisi adipisicing ex veniam laboris. Proident nisi nisi et non elit ad ut veniam occaecat consequat tempor magna qui officia. Exercitation aliqua exercitation dolore adipisicing. Aliquip ut aliqua nisi est nostrud nostrud ea ad aliquip velit velit pariatur ad. Duis adipisicing laborum et exercitation irure nulla.</p>
 					</div>
 					<div>
-						<h4>Page 3</h4>
-						<div>Aliquip et occaecat sit ex reprehenderit aliquip incididunt occaecat in aliqua pariatur aliquip. Minim ad velit id aliquip dolore non incididunt. Veniam aliquip veniam excepteur nostrud aute incididunt anim sint voluptate enim sint.</div>
+						<h4>Other</h4>
+						<p>Occaecat cupidatat velit fugiat duis cillum excepteur in. In laboris labore excepteur ex ipsum magna labore qui incididunt. Ipsum aliqua aliqua anim quis deserunt nostrud. Ad laboris irure aute aute.</p>
+						<p>Ut anim veniam aute labore consequat minim culpa quis officia nostrud aliquip labore aliquip anim. Exercitation occaecat occaecat nulla tempor. Id nulla Lorem quis irure exercitation consectetur incididunt velit. Eu quis ullamco aliqua duis.</p>
 					</div>
 				</TabbedContainer>
 
+				<TabbedContainer hideBorders={true}>
+					<div>
+						<h4>Hidden Borders</h4>
+						<p>Aliquip et occaecat sit ex reprehenderit aliquip incididunt occaecat in aliqua pariatur aliquip. Minim ad velit id aliquip dolore non incididunt. Veniam aliquip veniam excepteur nostrud aute incididunt anim sint voluptate enim sint.</p>
+						<p>Nisi proident ex exercitation reprehenderit magna irure sunt cupidatat ex enim id enim. Irure culpa anim do et consequat id magna occaecat adipisicing anim nisi reprehenderit. Nulla magna cupidatat ex minim velit sit exercitation magna proident. Lorem nisi incididunt dolore ullamco ipsum sit commodo. Officia dolor sit adipisicing aliquip dolore ad.</p>
+					</div>
+					<div>
+						<h4>Default Tab Names</h4>
+						<p>Tempor fugiat voluptate eiusmod ex aliquip amet. Anim eu aliqua est id. Laboris adipisicing cillum officia adipisicing nostrud. Nulla cupidatat ad ullamco officia. Do nostrud proident cillum aute. In aliquip eu Lorem commodo consectetur nisi est cillum fugiat excepteur voluptate sit dolor.</p>
+						<p>Consectetur do incididunt reprehenderit nulla nisi adipisicing ex veniam laboris. Proident nisi nisi et non elit ad ut veniam occaecat consequat tempor magna qui officia. Exercitation aliqua exercitation dolore adipisicing. Aliquip ut aliqua nisi est nostrud nostrud ea ad aliquip velit velit pariatur ad. Duis adipisicing laborum et exercitation irure nulla.</p>
+					</div>
+				</TabbedContainer>
+
+				<TabbedContainer hideBorders={true} tabStyle={2}>
+					<div><h4>Different Tab Style - Stuitable For Many Tabs</h4><div>Nisi proident ex exercitation reprehenderit magna irure sunt cupidatat ex enim id enim. Irure culpa anim do et consequat id magna occaecat adipisicing anim nisi reprehenderit. Nulla magna cupidatat ex minim velit sit exercitation magna proident. Lorem nisi incididunt dolore ullamco ipsum sit commodo. Officia dolor sit adipisicing aliquip dolore ad.</div></div>
+					<div><div>Tempor fugiat voluptate eiusmod ex aliquip amet. Anim eu aliqua est id. Laboris adipisicing cillum officia adipisicing nostrud. Nulla cupidatat ad ullamco officia. Do nostrud proident cillum aute. In aliquip eu Lorem commodo consectetur nisi est cillum fugiat excepteur voluptate sit dolor.</div></div>
+					<div><div>Amet qui dolor pariatur ullamco exercitation aliqua do non aliquip mollit. Dolore ad ex Lorem laborum exercitation nisi id cupidatat eu ad eiusmod magna ut exercitation. Aute dolor dolor nulla nisi tempor aute sunt incididunt. Deserunt enim veniam cillum reprehenderit officia voluptate nulla nulla dolore. Esse reprehenderit adipisicing non fugiat quis ut labore nisi nisi.</div></div>
+					<div><div>Veniam officia officia sit irure labore magna aute aliquip ullamco duis incididunt. Duis aute tempor proident nostrud eiusmod pariatur laborum cillum ex consequat. Ullamco cillum magna reprehenderit proident incididunt duis eu dolore ad amet qui.</div></div>
+					<div><div>Ad proident nulla Lorem occaecat voluptate velit Lorem proident aute ea proident commodo est. Labore aliquip magna exercitation id do in. Ad ea excepteur amet ex. Ad qui aliqua laboris qui ut elit. Quis elit sunt fugiat minim et tempor culpa velit mollit. Veniam proident minim voluptate magna elit fugiat nostrud magna mollit officia.</div></div>
+					<div><div>Aliquip eu adipisicing cupidatat incididunt deserunt cillum. Officia irure ex exercitation qui voluptate reprehenderit et ut pariatur et. Nulla non id ad proident nostrud aliquip sunt. Amet minim do esse et aute id est aute tempor laboris esse est ullamco consequat. Cupidatat officia aliquip proident sit incididunt fugiat sit laboris ipsum.</div></div>
+					<div><div>Esse nostrud aliquip ad ex irure officia incididunt. Do laborum veniam nulla ut mollit consectetur quis fugiat est esse. Nulla laborum aute dolor reprehenderit. Occaecat ad enim dolore culpa laboris nisi sit incididunt aliqua. Esse occaecat cillum reprehenderit ad officia in incididunt adipisicing nostrud deserunt consectetur sunt quis.</div></div>
+					<div><div>Commodo amet qui mollit quis ex consectetur cillum esse exercitation officia minim mollit deserunt. Exercitation ullamco velit magna nisi deserunt dolore duis enim cillum ullamco aute. Duis aute enim officia aliqua pariatur. Dolore consequat sunt cupidatat qui enim quis exercitation eu exercitation do laboris nulla. Veniam enim pariatur Lorem ullamco cupidatat tempor Lorem officia irure occaecat mollit nisi. Exercitation qui exercitation ipsum consequat quis tempor aliqua velit fugiat qui.</div></div>
+					<div><div>Exercitation labore ex consequat consequat et. Duis laborum deserunt aliqua non nostrud dolor eiusmod Lorem. Qui in incididunt deserunt aute. Eiusmod magna voluptate non est eu dolor esse exercitation consectetur nisi nulla non ea adipisicing. In aliqua occaecat officia cillum cillum laborum laborum ea consequat dolore officia. Ea minim laboris aliquip veniam est.</div></div>
+					<div><div>Aute velit commodo dolor occaecat voluptate velit nulla cillum sunt ullamco consequat. Laborum duis sit ad duis minim esse consequat excepteur. Excepteur et sit culpa ullamco. Dolore do fugiat qui reprehenderit duis et quis exercitation. Elit nisi eiusmod esse nisi ex eiusmod. Tempor culpa ex ad nulla elit laborum ea deserunt sunt magna cupidatat sunt voluptate commodo.</div></div>
+					<div><div>Esse dolore irure ullamco laboris et do ad consequat ex cillum. Laboris consectetur laboris aliquip excepteur eiusmod cillum minim nostrud non quis. Est nulla Lorem nostrud occaecat cupidatat officia dolor mollit. Ullamco officia eiusmod voluptate commodo qui aute Lorem. Ullamco tempor duis velit commodo enim sit elit laborum nisi consectetur veniam Lorem irure. Officia dolor irure ipsum aliqua mollit ut excepteur consectetur do qui est officia pariatur.</div></div>
+					<div><div>Excepteur ullamco ipsum voluptate aliqua est proident magna commodo voluptate tempor labore. Aute proident adipisicing reprehenderit consectetur ipsum labore ad. Mollit culpa voluptate deserunt occaecat eu sint aliquip non exercitation elit. Velit irure aute deserunt laboris et aute adipisicing nostrud. Magna dolor et ullamco eiusmod.</div></div>
+					<div><div>Dolore mollit veniam ea duis cupidatat. Lorem sunt commodo laboris ut velit veniam ut quis aliquip sunt in id. Nulla minim dolore ullamco cupidatat est adipisicing quis pariatur laborum pariatur veniam adipisicing tempor. Excepteur amet velit proident ea ipsum qui labore mollit.</div></div>
+					<div><div>Sint ipsum eiusmod proident occaecat dolore aute. In sit excepteur consequat cillum. Ea sint in elit dolor proident exercitation aliquip in non sint et sunt non deserunt. Sunt culpa minim deserunt ea id sit culpa occaecat esse incididunt velit non magna cupidatat. Nisi tempor culpa cillum duis proident. Consequat quis sit laboris nisi consequat elit velit aute nisi labore dolore sint nulla.</div></div>
+					<div><div>Laboris duis nulla dolore officia officia esse aliqua nulla do fugiat. Aliquip irure ea velit est. Aute veniam tempor incididunt esse amet quis ea commodo mollit et ullamco.</div></div>
+					<div><div>Voluptate amet aute ea nostrud ullamco elit tempor anim tempor aliquip proident. Duis ullamco et qui velit cillum id dolor occaecat excepteur magna sunt nulla sit. Magna occaecat qui cillum labore reprehenderit magna proident laborum est esse voluptate sunt. In culpa commodo eiusmod ullamco veniam ad minim incididunt ipsum minim proident eu magna.</div></div>
+					<div><div>Sit eu aute laborum non enim cupidatat in id ut ut aute. Quis Lorem minim ex in reprehenderit non. Dolore cupidatat consequat ut cupidatat pariatur ea qui non magna cupidatat consectetur mollit. Non aliquip mollit aliqua dolore tempor cupidatat reprehenderit enim ex sunt Lorem irure. Et in tempor dolore irure excepteur eiusmod irure.</div></div>
+					<div><div>Consectetur sunt fugiat laborum ut occaecat laborum consectetur irure ullamco. Exercitation anim esse ea est ex excepteur id incididunt ea consectetur cupidatat nulla. Velit nisi consequat dolor est sunt Lorem commodo deserunt nisi dolore excepteur ullamco.</div></div>
+					<div><div>Qui labore deserunt enim eiusmod officia. Dolore commodo adipisicing velit amet elit consectetur consequat ipsum nulla dolor amet adipisicing sunt quis. Amet ex do tempor reprehenderit eiusmod exercitation laboris. Velit eu ea dolore aliquip reprehenderit officia anim mollit reprehenderit aliquip voluptate Lorem. Culpa ex consequat est in ea ex sint excepteur ea pariatur proident ipsum minim.</div></div>
+					<div><div>Culpa sunt irure aliqua consectetur ex dolor cupidatat adipisicing. Officia Lorem elit deserunt ullamco sint consequat minim aliquip. Sunt esse cupidatat irure non do sit proident elit tempor consectetur amet sint. Proident amet eu velit laborum consequat. Occaecat et culpa ea qui. Do dolore pariatur aute occaecat tempor aliqua velit et sit anim amet et sit quis.</div></div>
+					<div><div>In occaecat reprehenderit pariatur mollit proident amet pariatur eiusmod dolore consectetur et. Veniam amet dolor laboris do commodo incididunt quis. Ullamco dolore incididunt adipisicing non nostrud magna magna eiusmod.</div></div>
+				</TabbedContainer>
 
 				{/* Modals should be at the end to prevent possible glitches */}
 				<Modal open={modal1Open} width='400px' closeFunc={() => setModal1Open(false)} closeOnClickOutside={true}>
