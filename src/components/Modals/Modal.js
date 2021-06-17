@@ -54,6 +54,8 @@ const StyledComp = styled.div`
 
 const Modal = ({children, open, darken=true, width='500px', closeFunc=()=>{}, closeOnClickOutside=false}) => {
     const ref = useRef(null);
+    //this allows multiple modals on a page without affecting document.body styles from each other.
+    const [isOpen, setIsOpen] = useState(open);
 
     useEffect(() => {
         const onClickOutside = (e) => {
@@ -69,16 +71,19 @@ const Modal = ({children, open, darken=true, width='500px', closeFunc=()=>{}, cl
 
     }, [ref, open]);
 
-    if (open) {
+    //only update when state changes
+    if (open && !isOpen) {
         if (window.scrollY > 0) document.body.style.top = `-${window.scrollY}px`;
         document.body.style.position = 'fixed';
         document.body.style.width = '100%';
-    } else {
+        setIsOpen(true);
+    } else if (!open && isOpen) {
         const scrollY = parseInt(document.body.style.top || '0') * -1;
         document.body.style.top = '';
         document.body.style.position = '';
         document.body.style.width = '';
         if (scrollY > 0) window.scrollTo(0, scrollY);
+        setIsOpen(false);
     }
 
     return (
