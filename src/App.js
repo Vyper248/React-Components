@@ -16,6 +16,7 @@ import Loading2 from './components/Loading/Loading2';
 import Loading3 from './components/Loading/Loading3';
 import Loading4 from './components/Loading/Loading4';
 import Loading5 from './components/Loading/Loading5';
+import Loading6 from './components/Loading/Loading6';
 
 import Input from './components/Inputs/Input';
 import Dropdown from './components/Inputs/Dropdown';
@@ -84,14 +85,15 @@ function App() {
 				<ConfirmButtonPopup label='Confirm Button 2' color='red' textColor='black' direction='right'/>
 
 				<Heading text='Loading'/>
-				{/* <Loading1 color='blue'/> */}
-				{/* <Loading2 color='green' rotation='90' origin='middle' smooth='2'/> */}
-				{/* <Loading2 color='red' rotation='0' origin='middle' smooth='3'/> */}
-				{/* <Loading2 color='blue' rotation='-90' origin='left' smooth='1'/> */}
-				{/* <Loading3 color='black'/> */}
-				{/* <Loading5 color='red'/> */}
-				{/* <Loading5 color='blue' style={2}/> */}
-				{/* <Loading4 color='red'/> */}
+				<Loading1 color='blue'/>
+				<Loading6 color='black'/>
+				<Loading3 color='black'/>
+				<Loading2 color='green' rotation='90' origin='middle' smooth='2'/>
+				<Loading2 color='red' rotation='0' origin='middle' smooth='3'/>
+				<Loading2 color='blue' rotation='-90' origin='left' smooth='1'/>
+				<Loading5 color='red'/>
+				<Loading5 color='blue' style={2}/>
+				<Loading4 color='red'/>
 
 				<Heading text='Inputs'/>
 				<Input type='text' value={textInput} onChange={setTextInput} placeholder='Text Input'/>
