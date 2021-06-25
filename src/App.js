@@ -30,6 +30,9 @@ import Modal from './components/Modals/Modal';
 
 import TabbedContainer from './components/Containers/TabbedContainer';
 
+import List from './components/Lists/List';
+import ListSortable from './components/Lists/ListSortable';
+
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
 	const [numberInput, setNumberInput] = useState(5);
@@ -42,6 +45,14 @@ function App() {
 	const [modal1Open, setModal1Open] = useState(false);
 	const [modal2Open, setModal2Open] = useState(false);
 	const [modal3Open, setModal3Open] = useState(false);
+	const [listData, setListData] = useState([
+		{id: 0, value: 'Trifle'},
+		{id: 1, value: 'Cake'},
+		{id: 4, value: 'Pie'},
+		{id: 7, value: 'Tart'},
+		{id: 3, value: 'Pudding'},
+		{id: 5, value: 'Ice Cream'},
+	]);
 
 	const tableData = [
 		['Bob', '1981-12-12', 'Nottingham', 'UK'],
@@ -51,6 +62,10 @@ function App() {
 		['Phil', '1993-10-27', 'Cambridge', 'UK'],
 		['Heather', '1984-05-16', 'Paris', 'France']
 	];
+
+	const onChangeList = (arr) => {
+		setListData(arr);
+	}
 
     return (
     	<div className='App'>
@@ -166,7 +181,7 @@ function App() {
 						<p>Ut anim veniam aute labore consequat minim culpa quis officia nostrud aliquip labore aliquip anim. Exercitation occaecat occaecat nulla tempor. Id nulla Lorem quis irure exercitation consectetur incididunt velit. Eu quis ullamco aliqua duis.</p>
 					</div>
 				</TabbedContainer>
-
+				<br/>
 				<TabbedContainer hideBorders={true}>
 					<div>
 						<h4>Hidden Borders</h4>
@@ -179,7 +194,7 @@ function App() {
 						<p>Consectetur do incididunt reprehenderit nulla nisi adipisicing ex veniam laboris. Proident nisi nisi et non elit ad ut veniam occaecat consequat tempor magna qui officia. Exercitation aliqua exercitation dolore adipisicing. Aliquip ut aliqua nisi est nostrud nostrud ea ad aliquip velit velit pariatur ad. Duis adipisicing laborum et exercitation irure nulla.</p>
 					</div>
 				</TabbedContainer>
-
+				<br/>
 				<TabbedContainer hideBorders={true} tabStyle={2}>
 					<div><h4>Different Tab Style - Stuitable For Many Tabs</h4><div>Nisi proident ex exercitation reprehenderit magna irure sunt cupidatat ex enim id enim. Irure culpa anim do et consequat id magna occaecat adipisicing anim nisi reprehenderit. Nulla magna cupidatat ex minim velit sit exercitation magna proident. Lorem nisi incididunt dolore ullamco ipsum sit commodo. Officia dolor sit adipisicing aliquip dolore ad.</div></div>
 					<div><div>Tempor fugiat voluptate eiusmod ex aliquip amet. Anim eu aliqua est id. Laboris adipisicing cillum officia adipisicing nostrud. Nulla cupidatat ad ullamco officia. Do nostrud proident cillum aute. In aliquip eu Lorem commodo consectetur nisi est cillum fugiat excepteur voluptate sit dolor.</div></div>
@@ -203,6 +218,19 @@ function App() {
 					<div><div>Culpa sunt irure aliqua consectetur ex dolor cupidatat adipisicing. Officia Lorem elit deserunt ullamco sint consequat minim aliquip. Sunt esse cupidatat irure non do sit proident elit tempor consectetur amet sint. Proident amet eu velit laborum consequat. Occaecat et culpa ea qui. Do dolore pariatur aute occaecat tempor aliqua velit et sit anim amet et sit quis.</div></div>
 					<div><div>In occaecat reprehenderit pariatur mollit proident amet pariatur eiusmod dolore consectetur et. Veniam amet dolor laboris do commodo incididunt quis. Ullamco dolore incididunt adipisicing non nostrud magna magna eiusmod.</div></div>
 				</TabbedContainer>
+
+				<Heading text='Lists'/>
+				<List heading='Basic List'>
+					<li>Trifle</li>
+					<li>Cake</li>
+					<li>Pie</li>
+					<li>Tart</li>
+					<li>Pudding</li>
+					<li>Ice Cream</li>
+				</List>
+				<ListSortable heading='Draggable List' items={listData} onChange={onChangeList}>
+					{ listData.map((obj,i) => <li key={`${i}-${obj.value}`}>{obj.value}</li>)}
+				</ListSortable>
 
 				{/* Modals should be at the end to prevent possible glitches */}
 				<Modal open={modal1Open} width='400px' closeFunc={() => setModal1Open(false)} closeOnClickOutside={true}>
