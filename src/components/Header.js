@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import styled from 'styled-components';
 
 const StyledComp = styled.div`
@@ -14,4 +14,4 @@ const Header = () => {
     );
 }
 
-export default Header;
+export default memo(Header);

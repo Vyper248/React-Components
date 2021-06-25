@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import styled from 'styled-components';
 
 const StyledComp = styled.div`
@@ -97,4 +97,12 @@ const TabbedContainer = ({children, startPage=1, tabNames=[], hideBorders=false,
     );
 }
 
-export default TabbedContainer;
+const compareProps = (prev, next) => {
+    if (prev.hideBorders !== next.hideBorders) return false;
+    if (prev.tabStyle !== next.tabStyle) return false;
+    if (prev.tabNames && prev.tabNames.toString() !== next.tabNames.toString()) return false;
+    if (prev.children.toString() !== next.children.toString()) return false;
+    return true;
+}
+
+export default memo(TabbedContainer, compareProps);

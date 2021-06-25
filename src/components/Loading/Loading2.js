@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import styled from 'styled-components';
 
 let arr = new Array(10).fill(1).map((a,i) => i+1).reverse();
@@ -35,4 +35,4 @@ const Loading2 = ({color='black', rotation=90, smooth=2, origin='middle'}) => {
     );
 }
 
-export default Loading2;
+export default memo(Loading2);

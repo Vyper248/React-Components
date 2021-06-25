@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import styled from 'styled-components';
 
 let arr = new Array(30).fill(1).map((a,i) => i+1);
@@ -43,4 +43,4 @@ const Loading5 = ({color='black', style=1}) => {
     );
 }
 
-export default Loading5;
+export default memo(Loading5);

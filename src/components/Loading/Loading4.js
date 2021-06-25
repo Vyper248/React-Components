@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import styled from 'styled-components';
 
 const StyledComp = styled.div`
@@ -54,4 +54,4 @@ const Loading4 = ({color='red'}) => {
     );
 }
 
-export default Loading4;
+export default memo(Loading4);

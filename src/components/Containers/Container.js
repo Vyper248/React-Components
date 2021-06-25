@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import styled from 'styled-components';
 
 const StyledComp = styled.div`
@@ -13,4 +13,4 @@ const Container = ({children}) => {
     );
 }
 
-export default Container;
+export default memo(Container);

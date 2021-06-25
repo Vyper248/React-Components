@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import styled from 'styled-components';
 
 const StyledComp = styled.table`
@@ -99,4 +99,12 @@ const TableSearchable = ({tableHeading='', header=[], data=[], size='medium'}) =
     );
 }
 
-export default TableSearchable;
+const compareProps = (prev, next) => {
+    if (prev.tableHeading !== next.tableHeading) return false;
+    if (prev.size !== next.size) return false;
+    if (prev.header && prev.header.toString() !== next.header.toString()) return false;
+    if (prev.data && prev.data.toString() !== next.data.toString()) return false;
+    return true;
+}
+
+export default memo(TableSearchable, compareProps);
