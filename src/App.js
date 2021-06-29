@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import styled from 'styled-components';
 import './App.css';
+import { TiArrowUnsorted } from 'react-icons/ti';
 
 import Container from './components/Containers/Container';
 import Header from './components/Header';
@@ -32,6 +34,7 @@ import TabbedContainer from './components/Containers/TabbedContainer';
 
 import List from './components/Lists/List';
 import ListSortable from './components/Lists/ListSortable';
+import ListSortable2 from './components/Lists/ListSortable2';
 
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
@@ -220,6 +223,7 @@ function App() {
 				</TabbedContainer>
 
 				<Heading text='Lists'/>
+				<p>Sortable List 1 shows where the item will insert while dragging without actually re-arranging anything. Sortable List 2 will update the list as the item is being dragged. Both versions are shown with the option to add a drag handle, just need to enable and add the 'handle' class to the element.</p>
 				<List heading='Basic List'>
 					<li>Trifle</li>
 					<li>Cake</li>
@@ -228,9 +232,22 @@ function App() {
 					<li>Pudding</li>
 					<li>Ice Cream</li>
 				</List>
-				<ListSortable heading='Draggable List' items={listData} onChange={onChangeList}>
-					{ listData.map((obj,i) => <li key={`${i}-${obj.value}`}>{obj.value}</li>)}
+
+				<ListSortable heading='Sortable List 1' items={listData} onChange={onChangeList}>
+					{ listData.map((obj,i) => <div key={`${i}-${obj.value}`}>{obj.value}</div>)}
 				</ListSortable>
+
+				<ListSortable heading='Sortable List 1' items={listData} onChange={onChangeList} dragHandle={true}>
+					{ listData.map((obj,i) => <ListItem key={`${i}-${obj.value}`}><span className='handle'><TiArrowUnsorted/></span>{obj.value}</ListItem>)}
+				</ListSortable>
+
+				<ListSortable2 heading='Sortable List 2' items={listData} onChange={onChangeList}>
+					{ listData.map((obj,i) => <div key={`${i}-${obj.value}`}>{obj.value}</div>)}
+				</ListSortable2>
+
+				<ListSortable2 heading='Sortable List 2' items={listData} onChange={onChangeList} dragHandle={true}>
+					{ listData.map((obj,i) => <ListItem key={`${i}-${obj.value}`}><span className='handle'><TiArrowUnsorted/></span>{obj.value}</ListItem>)}
+				</ListSortable2>
 
 				{/* Modals should be at the end to prevent possible glitches */}
 				<Modal open={modal1Open} width='400px' closeFunc={() => setModal1Open(false)} closeOnClickOutside={true}>
@@ -287,5 +304,32 @@ function App() {
 		</div>
     );
 }
+
+const ListItem = styled.div`
+	padding: 0px !important;
+
+	&:hover {
+		background-color: white !important;
+		cursor: default !important;
+	}
+
+	& > .handle {
+		display: inline-block;
+		padding: 4px 6px;
+		height: 28px;
+		margin-right: 5px;
+		border-right: 1px solid #DDD;
+	}
+
+	& > .handle > svg {
+		position: relative;
+		top: 2px;
+	}
+
+	& > .handle:hover {
+		background-color: #EEE;
+		cursor: pointer;
+	}
+`;
 
 export default App;

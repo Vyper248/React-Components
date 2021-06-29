@@ -27,10 +27,6 @@ const StyledComp = styled.div`
         background-color: #EEE;
     }
 
-    & > div > *.endPos {
-        ${props => props.endPos < props.startPos ? 'border-top: 1px solid blue !important' : 'border-bottom: 1px solid blue !important'};
-    }
-
     & > h4 {
         margin: 0px;
         border-bottom: 1px solid #DDD;
@@ -49,9 +45,8 @@ const recursiveMap = (children, onMouseDown) => {
     })
 } 
 
-const ListSortable = ({children, width='150px', heading='', dragHandle=false, items=[], onChange=()=>{}}) => {
+const ListSortable2 = ({children, width='150px', heading='', dragHandle=false, items=[], onChange=()=>{}}) => {
     const [startPos, setStartPos] = useState(-1);
-    const [endPos, setEndPos] = useState(-1);
     const [dragEnabled, setDragEnabled] = useState(dragHandle ? false : true);
 
     const onDragStart = (i) => () => {
@@ -59,17 +54,16 @@ const ListSortable = ({children, width='150px', heading='', dragHandle=false, it
     }
 
     const onDragEnter = (i) => () => {
-        setEndPos(i);
-    }
-
-    const onDragEnd = () => {
+        if (dragHandle && !dragEnabled) return;
         let newItems = [...items];
         let movedItem = newItems[startPos];
         newItems.splice(startPos, 1);
-        newItems.splice(endPos, 0, movedItem);
+        newItems.splice(i, 0, movedItem);
         onChange(newItems);
-        setStartPos(-1);
-        setEndPos(-1);
+        setStartPos(i);
+    }
+
+    const onDragEnd = () => {
         setDragEnabled(dragHandle ? false : true);
     }
 
@@ -84,15 +78,15 @@ const ListSortable = ({children, width='150px', heading='', dragHandle=false, it
     if (dragHandle) children = recursiveMap(children, onMouseDown);
 
     return (
-        <StyledComp width={width} startPos={startPos} endPos={endPos}>
+        <StyledComp width={width}>
             { heading.length > 0 ? <h4>{heading}</h4> : null }
             <div>
             { children.map((el,i) => {
-                return <el.type className={i === endPos ? 'endPos' : ''} {...el.props} draggable={dragEnabled} onMouseUp={onMouseUp} onDragStart={onDragStart(i)} onDragEnter={onDragEnter(i)} onDragEnd={onDragEnd}>{el.props.children}</el.type>;
+                return <el.type draggable={dragEnabled} onMouseUp={onMouseUp} onDragStart={onDragStart(i)} onDragEnter={onDragEnter(i)} onDragEnd={onDragEnd}>{el.props.children}</el.type>;
             }) }
             </div>
         </StyledComp>
     );
 }
 
-export default ListSortable;
+export default ListSortable2;
