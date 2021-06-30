@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import styled from 'styled-components';
 
 const StyledComp = styled.ul`
@@ -38,4 +38,10 @@ const List = ({children, width='150px', heading=''}) => {
     );
 }
 
-export default List;
+const compareProps = (prev, next) => {
+    if (prev.width !== next.width) return false;
+    if (prev.heading !== next.heading) return false;
+    return true;
+}
+
+export default memo(List, compareProps);
