@@ -35,6 +35,7 @@ import TabbedContainer from './components/Containers/TabbedContainer';
 import List from './components/Lists/List';
 import ListSortable from './components/Lists/ListSortable';
 import ListSortable2 from './components/Lists/ListSortable2';
+import ListSortable3 from './components/Lists/ListSortable3';
 
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
@@ -74,6 +75,7 @@ function App() {
     	<div className='App'>
 			<Header/>
 			<Container>
+				<p>Note: The purpose of these components is to provide a template to customise where needed. So not necessarily designed to be used as is.</p>
 				<Heading text='Buttons'/>
 				<p>Basic buttons. Text colour automatically changes between black and white depending on background colour, otherwise has can set manually. Can also change width and margin properties.</p>
 				<BasicButton label='Basic Button' onClick={()=>{}}/>
@@ -102,7 +104,7 @@ function App() {
 				<ConfirmButtonPopup label='Confirm Button 2' color='green' direction='bottom'/>
 				<ConfirmButtonPopup label='Confirm Button 2' color='red' textColor='black' direction='right'/>
 
-				<Heading text='Loading'/>
+				<Heading text='Loading Indicators'/>
 				<Loading1 color='blue'/>
 				<Loading6 color='black'/>
 				<Loading3 color='black'/>
@@ -142,7 +144,7 @@ function App() {
 				<Input labelText='Other' type='radio' value={'Other'} onChange={setRadioInput} checked={radioInput === 'Other'}/>
 
 				<Heading text='Dropdowns'/>
-				<p>(Check code for differences in how to use options.)</p>
+				<p>(Check code for differences in how to use options) These use the default appearance for the dropdown.</p>
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={['Cat', 'Dog', 1, 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]} onChange={setDropdownInput}/>
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={[{display: 'Cat', value: 'Cat'}, {display: 'Dog', value: 'Dog'}, {display: 'Trifle', value: 1}, {display: 'Cake', value: 2}]} onChange={setDropdownInput}/>
 				<Dropdown placeholder='Please Select' value={dropdownInput} options={{'Pets': ['Cat', 'Dog'], 'Food': [1, 2]}} onChange={setDropdownInput}/>
@@ -223,7 +225,9 @@ function App() {
 				</TabbedContainer>
 
 				<Heading text='Lists'/>
-				<p>Sortable List 1 shows where the item will insert while dragging without actually re-arranging anything. Sortable List 2 will update the list as the item is being dragged. Both versions are shown with the option to add a drag handle, just need to enable and add the 'handle' class to the element.</p>
+				<p>Sortable List 1 shows where the item will insert while dragging without actually re-arranging anything.</p>
+				<p>Sortable List 2 will update the list as the item is being dragged. Both versions are shown with the option to add a drag handle, just need to enable and add the 'handle' class to the element.</p>
+				<p>Sortable List 3 is visually the same as 2, but just has an option for enabling or disabling the drag handle and only uses the items array to display the list, so no custom formatting, but simpler to use.</p>
 				<List heading='Basic List'>
 					<li>Trifle</li>
 					<li>Cake</li>
@@ -248,6 +252,8 @@ function App() {
 				<ListSortable2 heading='Sortable List 2' items={listData} onChange={onChangeList} dragHandle={true}>
 					{ listData.map((obj,i) => <ListItem key={`${i}-${obj.value}`}><span className='handle'><TiArrowUnsorted/></span>{obj.value}</ListItem>)}
 				</ListSortable2>
+
+				<ListSortable3 heading='Sortable List 3' items={listData} onChange={onChangeList} dragHandle={true}/>
 
 				{/* Modals should be at the end to prevent possible glitches */}
 				<Modal open={modal1Open} width='400px' closeFunc={() => setModal1Open(false)} closeOnClickOutside={true}>
