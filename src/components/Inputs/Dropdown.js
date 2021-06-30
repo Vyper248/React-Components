@@ -9,7 +9,7 @@ const StyledComp = styled.div`
     position: relative;
 
     & > label {
-        border: 1px solid black;
+        border: 1px solid #DDD;
         height: 100%;
         margin: 0px;
         display: inline-flex;
@@ -30,7 +30,7 @@ const StyledComp = styled.div`
     }
 
     & > select {
-        border: 1px solid black;
+        border: 1px solid #DDD;
         background-color: white;
         -webkit-appearance:none;
         height: 100%;

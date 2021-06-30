@@ -20,8 +20,8 @@ const StyledComp = styled.div`
         ${props => props.open ? 'border-bottom-right-radius: 0px; border-bottom-left-radius: 0px;' : ''};
         text-overflow: ellipsis;
         ${props => props.open ? 'transition: border-radius 0s' : 'transition: border-radius 0s 0.3s'};
-        ${props => props.open ? 'border: 1px solid blue' : 'border: 1px solid black'};
-        border-bottom: 1px solid black;
+        ${props => props.open ? 'border: 1px solid blue' : 'border: 1px solid #DDD'};
+        border-bottom: 1px solid #DDD;
     }
 
     & > div#dropdown::after {
@@ -41,7 +41,7 @@ const StyledComp = styled.div`
     & > div#options {
         position: absolute;
         background-color: #EEE;
-        ${props => props.open ? 'border: 1px solid blue' : 'border: 1px solid black'};
+        ${props => props.open ? 'border: 1px solid blue' : 'border: 1px solid #DDD'};
         border-top: none;
         width: 100%;
         left: 0px;
@@ -55,7 +55,7 @@ const StyledComp = styled.div`
 
     & > div#options > div {
         height: 28px;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid #DDD;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -97,7 +97,7 @@ const StyledComp = styled.div`
 `;
 
 const StyledLabel = styled.label`
-    border: 1px solid black;
+    border: 1px solid #DDD;
     height: 28px;
     margin: 0px;
     display: inline-flex;

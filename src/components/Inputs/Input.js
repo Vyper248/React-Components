@@ -9,7 +9,7 @@ const StyledComp = styled.div`
     position: relative;
 
     & > label, & > input {
-        border: 1px solid black;
+        border: 1px solid #DDD;
         height: 100%;
         margin: 0px;
         display: inline-flex;
@@ -73,7 +73,7 @@ const StyledComp = styled.div`
 
     & > input[type=radio] + span {
         display: inline-block;
-        border: 1px solid black;
+        border: 1px solid #DDD;
         border-radius: 50%;
         width: 28px;
         height: 28px;
@@ -95,7 +95,7 @@ const StyledComp = styled.div`
 
     & > input[type=checkbox] + span {
         display: inline-block;
-        border: 1px solid black;
+        border: 1px solid #DDD;
         border-radius: 5px;
         ${props => props.labelText ? 'border-radius: 0px 5px 5px 0px;' : ''};
         width: 28px;
