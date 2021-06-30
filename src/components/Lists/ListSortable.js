@@ -15,7 +15,7 @@ const StyledComp = styled.div`
         border-bottom: 1px solid #DDD;
         padding: 5px;
         list-style: none;
-        user-select: none;
+        ${props => !props.dragHandle ? 'user-select: none;' : ''}
     }
 
     & > div > *:last-child {
@@ -23,7 +23,7 @@ const StyledComp = styled.div`
     }
 
     & > div > *:hover {
-        cursor: pointer;
+        ${props => props.dragHandle ? 'cursor: auto;' : 'cursor: pointer;'}
         background-color: #EEE;
     }
 
@@ -42,8 +42,8 @@ const StyledComp = styled.div`
 
 //Find the child with the 'handle' class and add onMouseDown handler to it.
 const recursiveMap = (children, onMouseDown) => {
-    return children.map(child => {
-        if (child.props && child.props.className === 'handle') return cloneElement(child, {onMouseDown: onMouseDown});
+    return children.map((child, i) => {
+        if (child.props && child.props.className === 'handle') return cloneElement(child, {onMouseDown: onMouseDown, key: `handle-${i}`});
         else if (child.props && typeof child.props.children === 'object') return cloneElement(child, {}, recursiveMap(child.props.children, onMouseDown))
         else return child;
     })
@@ -84,11 +84,11 @@ const ListSortable = ({children, width='150px', heading='', dragHandle=false, it
     if (dragHandle) children = recursiveMap(children, onMouseDown);
 
     return (
-        <StyledComp width={width} startPos={startPos} endPos={endPos}>
+        <StyledComp width={width} startPos={startPos} endPos={endPos} dragHandle={dragHandle}>
             { heading.length > 0 ? <h4>{heading}</h4> : null }
             <div>
             { children.map((el,i) => {
-                return <el.type className={i === endPos ? 'endPos' : ''} {...el.props} draggable={dragEnabled} onMouseUp={onMouseUp} onDragStart={onDragStart(i)} onDragEnter={onDragEnter(i)} onDragEnd={onDragEnd}>{el.props.children}</el.type>;
+                return <el.type key={`list-el-${i}`} className={i === endPos ? 'endPos' : ''} {...el.props} draggable={dragEnabled} onMouseUp={onMouseUp} onDragStart={onDragStart(i)} onDragEnter={onDragEnter(i)} onDragEnd={onDragEnd}>{el.props.children}</el.type>;
             }) }
             </div>
         </StyledComp>

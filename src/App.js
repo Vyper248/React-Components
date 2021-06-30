@@ -310,7 +310,6 @@ const ListItem = styled.div`
 
 	&:hover {
 		background-color: white !important;
-		cursor: default !important;
 	}
 
 	& > .handle {
