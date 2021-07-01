@@ -20,16 +20,15 @@ const StyledComp = styled.div`
         padding: 0px;
         height: ${props => props.open ? props.height+'px' : '0px'};
         ${props => props.instant ? 'height: auto;' : ''}
-        overflow: hidden;
+        ${props => !props.instant ? 'overflow: hidden;' : ''}
         transition: 0.5s;
         ${props => props.border ? 'border: 1px solid lightblue;' : ''}
         border-top: none;
-        ${'' /* ${props => props.instant && !props.open ? 'display: none;' : ''}; */}
     }
 
     & > div > div {
         padding: 10px;
-        overflow: hidden;
+        ${props => !props.instant ? 'overflow: hidden;' : ''}
     }
 `;
 
