@@ -38,6 +38,9 @@ import ListSortable from './components/Lists/ListSortable';
 import ListSortable2 from './components/Lists/ListSortable2';
 import ListSortable3 from './components/Lists/ListSortable3';
 
+import Upload from './components/Files/Upload';
+import Download from './components/Files/Download';
+
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
 	const [numberInput, setNumberInput] = useState(5);
@@ -273,6 +276,11 @@ function App() {
 					</ListSortable2>
 
 					<ListSortable3 heading='Sortable List 3' items={listData} onChange={onChangeList} dragHandle={true}/>
+				</DropdownContainer>
+
+				<DropdownContainer heading='Files' open={false} instant={true}>
+					<Upload/>
+					<Download data={{random: 'data', cat: 5}}/>
 				</DropdownContainer>
 
 				{/* Modals should be at the end to prevent possible glitches */}
