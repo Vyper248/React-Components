@@ -9,13 +9,6 @@ const StyledComp = styled.div`
         display: none;
     }
 
-    & > #chooseFile {
-        display: inline-block;
-        padding: 5px 10px;
-        background-color: #DDD;
-        border-radius: 5px 0px 0px 5px;
-    }
-
     & > #filename {
         width: 150px;
         height: 28px;
@@ -25,16 +18,18 @@ const StyledComp = styled.div`
         display: inline-block;
         padding: 5px;
         border: 1px solid #DDD;
+        border-radius: 5px 0px 0px 5px;
     }
 
     & > #uploadButton {
         display: inline-block;
+        height: 28px;
         padding: 5px 10px;
         background-color: #DDD;
         border-radius: 0px 5px 5px 0px;
     }
 
-    & > #chooseFile:hover, & > #uploadButton:hover {
+    & > #uploadButton:hover {
         cursor: pointer;
         filter: brightness(75%);
     }
@@ -46,7 +41,7 @@ const StyledComp = styled.div`
 
 const Upload = ({onUpload=()=>{}}) => {
     const [importData, setImportData] = useState(null);
-    const [fileName, setFileName] = useState('No File Selected');
+    const [fileName, setFileName] = useState('Choose a File');
     const fileInput = useRef(null);
 
     const onFileChange = (e) => {
@@ -81,14 +76,13 @@ const Upload = ({onUpload=()=>{}}) => {
             setImportData(null);
             fileInput.current.value = '';
         } else {
-            setFileName('No File Selected');
+            setFileName('Choose a File');
         }
     }
 
     return (
         <StyledComp>
             <input type='file' id='fileUpload' onChange={onFileChange} ref={fileInput}/>
-            <label id='chooseFile' htmlFor='fileUpload'>Choose File</label>
             <label id='filename' htmlFor='fileUpload'>{fileName}</label>
             <div id='uploadButton' onClick={onImport}>Upload</div>
         </StyledComp>
