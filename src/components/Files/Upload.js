@@ -55,11 +55,8 @@ const Upload = ({onUpload=()=>{}}) => {
             reader.onload = (e) => {
                 let text = reader.result;
                 let obj = JSON.parse(text);
-
-                //check and import what's needed
-                let newObj = {...obj};
                 
-                setImportData(newObj);
+                setImportData(obj);
             }
 
             reader.readAsText(file);
@@ -80,10 +77,12 @@ const Upload = ({onUpload=()=>{}}) => {
         }
     }
 
+    const uniqueId = 'fileUpload-' + Math.floor(Math.random() * 100);
+
     return (
         <StyledComp>
-            <input type='file' id='fileUpload' onChange={onFileChange} ref={fileInput}/>
-            <label id='filename' htmlFor='fileUpload'>{fileName}</label>
+            <input type='file' id={uniqueId} onChange={onFileChange} ref={fileInput}/>
+            <label id='filename' htmlFor={uniqueId}>{fileName}</label>
             <div id='uploadButton' onClick={onImport}>Upload</div>
         </StyledComp>
     );
