@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const StyledComp = styled.div`
     max-width: 1200px;
+    overflow: hidden;
     margin: auto;
     padding: 0px 10px;
 `;

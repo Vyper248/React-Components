@@ -41,6 +41,8 @@ import ListSortable3 from './components/Lists/ListSortable3';
 import Upload from './components/Files/Upload';
 import Download from './components/Files/Download';
 
+import FadeIn from './components/Containers/FadeIn';
+
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
 	const [numberInput, setNumberInput] = useState(5);
@@ -181,7 +183,7 @@ function App() {
 					<BasicButton onClick={() => setModal3Open(true)} label='Open Large'/>
 				</DropdownContainer>
 				
-				<DropdownContainer heading='Containers' open={false} instant={true}>
+				<DropdownContainer heading='Containers' open={true} instant={true}>
 					<TabbedContainer tabNames={['Tab 1', 'Page 2', 'Other']}>
 						<div>
 							<h4>Custom Tab Names</h4>
@@ -236,6 +238,7 @@ function App() {
 						<div><div>Culpa sunt irure aliqua consectetur ex dolor cupidatat adipisicing. Officia Lorem elit deserunt ullamco sint consequat minim aliquip. Sunt esse cupidatat irure non do sit proident elit tempor consectetur amet sint. Proident amet eu velit laborum consequat. Occaecat et culpa ea qui. Do dolore pariatur aute occaecat tempor aliqua velit et sit anim amet et sit quis.</div></div>
 						<div><div>In occaecat reprehenderit pariatur mollit proident amet pariatur eiusmod dolore consectetur et. Veniam amet dolor laboris do commodo incididunt quis. Ullamco dolore incididunt adipisicing non nostrud magna magna eiusmod.</div></div>
 					</TabbedContainer>
+
 					<DropdownContainer heading='Dropdown Container'>
 						<p>This one doesn't use the 'instant' setting so has a transition when opening and closing. Border is optional.</p>
 						<p>Minim amet sint reprehenderit aute enim et fugiat ex sit laboris amet cupidatat deserunt reprehenderit. Ullamco qui aliquip deserunt anim sit irure aliquip. Consequat excepteur sunt anim ut aliquip aute irure irure. Proident in tempor magna Lorem culpa non pariatur ut.</p>
@@ -244,6 +247,12 @@ function App() {
 						<p>Non sint ea consequat commodo reprehenderit quis veniam voluptate pariatur sint ipsum deserunt. Ex culpa aliquip consectetur dolore do non duis cupidatat do. Elit commodo adipisicing reprehenderit laboris quis irure dolor dolor. Consequat culpa voluptate ut mollit dolore elit. Id id ea veniam pariatur sunt nulla commodo fugiat occaecat adipisicing.</p>
 						<p>Sit ipsum amet anim cillum consectetur reprehenderit deserunt pariatur ea sunt. Officia qui voluptate commodo tempor labore nostrud eu laborum mollit. Labore nulla exercitation adipisicing aliqua dolore nisi dolor ullamco Lorem in esse consequat commodo ex.</p>
 					</DropdownContainer>
+
+					<FadeIn>
+						<h4>Fade In Container</h4>
+						<p>This container will fade in when in view and back out when not.</p>
+						<p>Commodo amet qui mollit quis ex consectetur cillum esse exercitation officia minim mollit deserunt. Exercitation ullamco velit magna nisi deserunt dolore duis enim cillum ullamco aute. Duis aute enim officia aliqua pariatur. Dolore consequat sunt cupidatat qui enim quis exercitation eu exercitation do laboris nulla. Veniam enim pariatur Lorem ullamco cupidatat tempor Lorem officia irure occaecat mollit nisi. Exercitation qui exercitation ipsum consequat quis tempor aliqua velit fugiat qui.</p>
+					</FadeIn>
 				</DropdownContainer>
 
 				<DropdownContainer heading='Lists' open={false} instant={true}>
