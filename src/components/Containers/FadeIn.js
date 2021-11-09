@@ -13,7 +13,7 @@ const StyledComp = styled.div`
     }
 `
 
-const FadeIn = ({children}) => {
+const FadeIn = ({children, threshold=0}) => {
     const ref = useRef(null);
 
     //if using multiple fade in components, could move this outside and pass in as a prop
@@ -21,12 +21,14 @@ const FadeIn = ({children}) => {
 		for (const entry of entries) {
 			entry.target.classList.toggle('fade-in', entry.isIntersecting)
 		}
-	});
+	}, {threshold: threshold});
 
 	useEffect(() => {
         if (ref.current) animationObserver.observe(ref.current);
 
-		return () => animationObserver.unobserve(ref.current);
+		return () => {
+            if (ref.current) animationObserver.unobserve(ref.current);
+        }
 	}, []);
 
     return (
