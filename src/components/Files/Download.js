@@ -5,11 +5,14 @@ const StyledComp = styled.button`
     background-color: #DDD;
     color: black;
     width: 150px;
+    height: 28px;
+    border: none;
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
     display: inline-block;
     font-size: 1em;
+    vertical-align: bottom;
 
     &:hover {
         cursor: pointer;

@@ -24,6 +24,7 @@ const StyledComp = styled.div`
         border: 1px solid #AAA;
         border-radius: 5px;
         width: ${props => props.width};
+        max-width: calc(100% - 40px);
         top: 50%;
         left: 50%;
         transform: ${props => props.open ? 'translate(-50%, -50%) scale(1)' : 'translate(-50%, -50%) scale(0)'};
