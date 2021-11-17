@@ -42,6 +42,7 @@ import Upload from './components/Files/Upload';
 import Download from './components/Files/Download';
 
 import FadeIn from './components/Containers/FadeIn';
+import Card from './components/Layout/Card';
 
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
@@ -290,6 +291,27 @@ function App() {
 				<DropdownContainer heading='Files' open={false} instant={true}>
 					<Upload/>
 					<Download data={{random: 'data', cat: 5}}/>
+				</DropdownContainer>
+
+				<DropdownContainer heading='Layout' open={false} instant={true}>
+					<Card>
+						<header>Card</header>
+						<section>
+							<p>Stuff here</p>
+							<p>Stuff here</p>
+							<p>Stuff here</p>
+						</section>
+						<footer><BasicButton label="Button"/></footer>
+					</Card>
+					<Card width='250px'>
+						<header>Card with Custom Width</header>
+						<section>
+							<p>Stuff here</p>
+							<p>Stuff here</p>
+							<p>Stuff here</p>
+						</section>
+						<footer><BasicButton label="Button"/></footer>
+					</Card>
 				</DropdownContainer>
 
 				{/* Modals should be at the end to prevent possible glitches */}
