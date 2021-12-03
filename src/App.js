@@ -32,6 +32,7 @@ import Modal from './components/Modals/Modal';
 
 import TabbedContainer from './components/Containers/TabbedContainer';
 import DropdownContainer from './components/Containers/DropdownContainer';
+import FadeIn from './components/Containers/FadeIn';
 
 import List from './components/Lists/List';
 import ListSortable from './components/Lists/ListSortable';
@@ -41,8 +42,8 @@ import ListSortable3 from './components/Lists/ListSortable3';
 import Upload from './components/Files/Upload';
 import Download from './components/Files/Download';
 
-import FadeIn from './components/Containers/FadeIn';
 import Card from './components/Layout/Card';
+import Grid from './components/Layout/Grid';
 
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
@@ -312,6 +313,14 @@ function App() {
 						</section>
 						<footer><BasicButton label="Button"/></footer>
 					</Card>
+					<Grid columnTemplate='1fr 1fr 1fr'>
+						<div style={{border: '1px solid black', padding: '5px'}}>Basic Grid</div>
+						<div style={{border: '1px solid black', padding: '5px'}}>Item 2</div>
+						<div style={{border: '1px solid black', padding: '5px'}}>Item 3</div>
+						<div style={{border: '1px solid black', padding: '5px'}}>Item 4</div>
+						<div style={{border: '1px solid black', padding: '5px'}}>Item 5</div>
+						<div style={{border: '1px solid black', padding: '5px'}}>Item 6</div>
+					</Grid>
 				</DropdownContainer>
 
 				{/* Modals should be at the end to prevent possible glitches */}

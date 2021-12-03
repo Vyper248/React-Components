@@ -1,6 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import useClickOutside from 'use-click-outside';
 
 import getContrastYIQ from '../../colorFunction';
 
@@ -128,11 +127,22 @@ const StyledComp = styled.div`
 const ConfirmButtonPopup = ({label='', onClick=()=>{}, color='#CCC', textColor, width, margin, direction='top'}) => {
     const [confirmOpen, setConfirmOpen] = useState(false);
     const [userDirection, setDirection] = useState(direction);
-    const ref = useRef();
-    const handleClickOutside = () => {
-        if (confirmOpen) setConfirmOpen(false);
-    }
-    useClickOutside(ref, handleClickOutside);
+
+    const ref = useRef(null);
+
+    useEffect(() => {
+        const onClickOutside = (e) => {
+            if (ref.current && !ref.current.contains(e.target)) {
+                if (confirmOpen) setConfirmOpen(false);
+            }
+        }
+
+        document.addEventListener('click', onClickOutside);
+        return () => {
+            document.removeEventListener('click', onClickOutside);
+        }
+
+    }, [ref, confirmOpen]);
 
     if (textColor === undefined && color !== '#CCC') textColor = getContrastYIQ(color);
 
