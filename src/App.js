@@ -44,6 +44,7 @@ import Download from './components/Files/Download';
 
 import Card from './components/Layout/Card';
 import Grid from './components/Layout/Grid';
+import BarChart from './components/Charts/BarChart';
 
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
@@ -73,6 +74,29 @@ function App() {
 		['Dan', '1987-07-01', 'London', 'UK'],
 		['Phil', '1993-10-27', 'Cambridge', 'UK'],
 		['Heather', '1984-05-16', 'Paris', 'France']
+	];
+
+	const chartData = [
+		{label: 'test1', value: 100},
+		{label: 'testing something', value: 50},
+		{label: 'testing 3', value: 16},
+		{label: 'test4', value: 78},
+		{label: 'test5', value: 91},
+		{label: 'test6', value: 25},
+		{label: 'test6', value: 63},
+		{label: 'test6', value: 14},
+		{label: 'test6', value: 24},
+		{label: 'test6', value: 34},
+		{label: 'test6', value: 39},
+		{label: 'test6', value: 24},
+		{label: 'test6', value: 34},
+		{label: 'test6', value: 74},
+		{label: 'test6', value: 34},
+		{label: 'test6', value: 84},
+		{label: 'test6', value: 54},
+		{label: 'test6', value: 68},
+		{label: 'test6', value: 74},
+		{label: 'test6', value: 80},
 	];
 
 	const onChangeList = (arr) => {
@@ -321,6 +345,10 @@ function App() {
 						<div style={{border: '1px solid black', padding: '5px'}}>Item 5</div>
 						<div style={{border: '1px solid black', padding: '5px'}}>Item 6</div>
 					</Grid>
+				</DropdownContainer>
+
+				<DropdownContainer heading='Charts' open={true} instant={true}>
+					<BarChart rangeStart={0} rangeEnd={100} data={chartData}/>
 				</DropdownContainer>
 
 				{/* Modals should be at the end to prevent possible glitches */}
