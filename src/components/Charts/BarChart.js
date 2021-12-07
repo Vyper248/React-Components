@@ -89,7 +89,7 @@ const StyledComp = styled.div`
 `
 
 const BarChart = ({title='', rangeStart, rangeEnd, data, height=300, sameColor, rangeLines=5, ...rest}) => {
-    const colors = ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928'];
+    const colors = ['#6a3d9a','#ee82ee','#ff00ff','#8b0000','#ff0000','#b03060','#008b8b','#9acd32','#00ff00','#00d89a','#00ffff','#00bfff','#4169e1','#0000ff','#00006a','#d8bfd8','#eee8aa','#ffd700','#ffa07a','#ff8c00'];
     if (rangeLines > 10) rangeLines = 10;
     if (rangeLines < 1) rangeLines = 1;
 

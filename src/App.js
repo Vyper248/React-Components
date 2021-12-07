@@ -45,6 +45,7 @@ import Download from './components/Files/Download';
 import Card from './components/Layout/Card';
 import Grid from './components/Layout/Grid';
 import BarChart from './components/Charts/BarChart';
+import PieChart from './components/Charts/PieChart';
 
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
@@ -349,6 +350,7 @@ function App() {
 
 				<DropdownContainer heading='Charts' open={true} instant={true}>
 					<BarChart title='Bar Chart' rangeStart={0} rangeEnd={100} data={chartData}/>
+					<PieChart title='Pie Chart' data={chartData}/>
 				</DropdownContainer>
 
 				{/* Modals should be at the end to prevent possible glitches */}
