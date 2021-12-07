@@ -348,7 +348,7 @@ function App() {
 				</DropdownContainer>
 
 				<DropdownContainer heading='Charts' open={true} instant={true}>
-					<BarChart rangeStart={0} rangeEnd={100} data={chartData}/>
+					<BarChart title='Bar Chart' rangeStart={0} rangeEnd={100} data={chartData}/>
 				</DropdownContainer>
 
 				{/* Modals should be at the end to prevent possible glitches */}

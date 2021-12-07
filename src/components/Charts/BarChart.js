@@ -1,8 +1,17 @@
 import styled from 'styled-components';
 
 const StyledComp = styled.div`
-    display: grid;
-    grid-template-columns: fit-content(50px) auto;
+    
+    & > div {
+        display: grid;
+        grid-template-columns: fit-content(50px) auto;
+    }
+
+    & h3 {
+        width: ${props => props.width ? props.width : '100%'};
+        min-width: ${props => `${props.numberItems*30}px`};
+        max-width: ${props => props.maxBarWidth ? `${props.numberItems*props.maxBarWidth}px` : ''};
+    }
 
     & #container {
         overflow: scroll;
@@ -79,7 +88,7 @@ const StyledComp = styled.div`
 
 `
 
-const BarChart = ({rangeStart, rangeEnd, data, height=300, sameColor, rangeLines=5, ...rest}) => {
+const BarChart = ({title='', rangeStart, rangeEnd, data, height=300, sameColor, rangeLines=5, ...rest}) => {
     const colors = ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928'];
     if (rangeLines > 10) rangeLines = 10;
     if (rangeLines < 1) rangeLines = 1;
@@ -110,19 +119,22 @@ const BarChart = ({rangeStart, rangeEnd, data, height=300, sameColor, rangeLines
 
     return (
         <StyledComp height={height} numberItems={data.length} {...rest}>
-            <div id='range'>
-                { rangeArr.map(x => <div>{x}</div>) }
-                <div>{rangeStart}</div>
-            </div>
-            <div id='container'>
-                <div id='chartContainer'>
-                    { rangeArr.map((x,i) => <div className='rangeLine' style={{top:`${(100/rangeArr.length)*i}%`}}></div>) }
-                    <div id='chart'>
-                        { mappedData.map(obj => <div title={obj.value} key={`bar-${obj.id}`} className='bar' style={{transform: `scale(1, ${obj.height})`, backgroundColor: obj.color}}/>) }
-                    </div>
+            <h3>{title}</h3>
+            <div>
+                <div id='range'>
+                    { rangeArr.map(x => <div>{x}</div>) }
+                    <div>{rangeStart}</div>
                 </div>
-                <div id='labels'>
-                    { mappedData.map(obj => <div key={`label-${obj.id}`} className='label'>{obj.label}</div>) }
+                <div id='container'>
+                    <div id='chartContainer'>
+                        { rangeArr.map((x,i) => <div className='rangeLine' style={{top:`${(100/rangeArr.length)*i}%`}}></div>) }
+                        <div id='chart'>
+                            { mappedData.map(obj => <div title={obj.value} key={`bar-${obj.id}`} className='bar' style={{transform: `scale(1, ${obj.height})`, backgroundColor: obj.color}}/>) }
+                        </div>
+                    </div>
+                    <div id='labels'>
+                        { mappedData.map(obj => <div key={`label-${obj.id}`} className='label'>{obj.label}</div>) }
+                    </div>
                 </div>
             </div>
         </StyledComp>
