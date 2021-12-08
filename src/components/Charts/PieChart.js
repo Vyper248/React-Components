@@ -2,6 +2,8 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 const StyledComp = styled.div`
+    margin: 20px;
+
     & #container {
         display: inline-grid;
         grid-template-columns: ${props => `${props.pieWidth} ${props.labelWidth}`};
@@ -118,7 +120,7 @@ const PieChart = ({title='', data, width=600}) => {
     }
 
     // const colors = ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928', '#8b0000', '#008b8b', '#00008b'];
-    const colors = ['#6a3d9a','#ee82ee','#ff00ff','#8b0000','#ff0000','#b03060','#008b8b','#9acd32','#00ff00','#00d89a','#00ffff','#00bfff','#4169e1','#0000ff','#00006a','#d8bfd8','#eee8aa','#ffd700','#ffa07a','#ff8c00'];
+    const colors = ['#8b0000','#ff0000','#b03060','#008b8b','#9acd32','#00ff00','#00d89a','#00ffff','#00bfff','#4169e1','#0000ff','#00006a','#d8bfd8','#eee8aa','#ffd700','#ffa07a','#ff8c00','#6a3d9a','#ee82ee','#ff00ff'];
     let labelWidth = 200;
     let pieWidth = width-labelWidth;
 
@@ -128,7 +130,7 @@ const PieChart = ({title='', data, width=600}) => {
 
     return (
         <StyledComp labelWidth={labelWidth+'px'} pieWidth={pieWidth+'px'} gradient={gradient} gradientTwo={gradientSingle} selectedVisible={selectedVisible}>
-            <h3>{title}</h3>
+            <h4>{title}</h4>
             <div id='container'>
                 <div id='pie' onClick={onClickChart}></div>
                 <div id='labels'>
