@@ -46,6 +46,7 @@ import Card from './components/Layout/Card';
 import Grid from './components/Layout/Grid';
 import BarChart from './components/Charts/BarChart';
 import PieChart from './components/Charts/PieChart';
+import VerticalTabbedContainer from './components/Containers/VerticalTabbedContainer';
 
 function App() {
 	const [textInput, setTextInput] = useState('Hello');
@@ -210,7 +211,7 @@ function App() {
 					<BasicButton onClick={() => setModal3Open(true)} label='Open Large'/>
 				</DropdownContainer>
 				
-				<DropdownContainer heading='Containers' open={false} instant={true}>
+				<DropdownContainer heading='Containers' open={true} instant={true}>
 					<TabbedContainer tabNames={['Tab 1', 'Page 2', 'Other']}>
 						<div>
 							<h4>Custom Tab Names</h4>
@@ -280,6 +281,8 @@ function App() {
 						<p>This container will fade in when in view and back out when not.</p>
 						<p>Commodo amet qui mollit quis ex consectetur cillum esse exercitation officia minim mollit deserunt. Exercitation ullamco velit magna nisi deserunt dolore duis enim cillum ullamco aute. Duis aute enim officia aliqua pariatur. Dolore consequat sunt cupidatat qui enim quis exercitation eu exercitation do laboris nulla. Veniam enim pariatur Lorem ullamco cupidatat tempor Lorem officia irure occaecat mollit nisi. Exercitation qui exercitation ipsum consequat quis tempor aliqua velit fugiat qui.</p>
 					</FadeIn>
+
+					<VerticalTabbedContainer/>
 				</DropdownContainer>
 
 				<DropdownContainer heading='Lists' open={false} instant={true}>
@@ -348,7 +351,7 @@ function App() {
 					</Grid>
 				</DropdownContainer>
 
-				<DropdownContainer heading='Charts' open={true} instant={true}>
+				<DropdownContainer heading='Charts' open={false} instant={true}>
 					<BarChart title='Bar Chart' rangeStart={0} rangeEnd={100} data={chartData}/>
 					<PieChart title='Pie Chart' data={chartData}/>
 				</DropdownContainer>
