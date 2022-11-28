@@ -211,7 +211,7 @@ function App() {
 					<BasicButton onClick={() => setModal3Open(true)} label='Open Large'/>
 				</DropdownContainer>
 				
-				<DropdownContainer heading='Containers' open={true} instant={true}>
+				<DropdownContainer heading='Containers' open={false} instant={true}>
 					<TabbedContainer tabNames={['Tab 1', 'Page 2', 'Other']}>
 						<div>
 							<h4>Custom Tab Names</h4>
